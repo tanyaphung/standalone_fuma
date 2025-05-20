@@ -1,0 +1,5 @@
+.venv
+input_dir*/
+commands/app.config
+commands/app.config.bk
+*.pyc
