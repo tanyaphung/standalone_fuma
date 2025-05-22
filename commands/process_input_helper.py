@@ -426,7 +426,8 @@ def log_user_specified_columns(user_defined_col):
                               "neacol": "Non effect allele",
                               "orcol": "OR",
                               "becol": "Beta",
-                              "secol": "SE"
+                              "secol": "SE",
+                              "Ncol": "Ncol"
                               }
     for key in user_defined_col:
         logger.info(f"For {user_friendly_colnames[user_defined_col[key]]}, user specified column name: {key}")
