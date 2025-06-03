@@ -3,3 +3,5 @@ input_dir*/
 commands/app.config
 commands/app.config.bk
 *.pyc
+commands/magma_gene_legacy.R
+commands/magma_legacy.py

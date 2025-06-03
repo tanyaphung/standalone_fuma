@@ -1,0 +1,14 @@
+[data]
+dbSNP=/mnt/d/standalone_fuma/dbSNP
+refgenome=/mnt/d/standalone_fuma
+ENSG=/mnt/d/standalone_fuma/ENSG
+ENSGfile=ENSG.genes.txt
+
+
+[magma]
+magmadir=/home/tnphung/FUMA-dev/jira_FUMA_117/external_program/magma
+magmafiles=/mnt/d/standalone_fuma/MAGMA
+
+[annovar]
+
+[CI]
