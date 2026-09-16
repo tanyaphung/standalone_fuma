@@ -1,0 +1,17 @@
+services:
+  web:
+    build: .
+    ports:
+      - "${APP_PORT}:5000"
+    environment:
+      - REDIS_HOST=${REDIS_HOST}
+      - REDIS_PORT=${REDIS_PORT}
+
+  redis:
+    image: redis:alpine
+
+  gwas_file_cli:
+    container_name: gwas_file_cli
+    build:
+      dockerfile: gwas_file/Dockerfile-gwas_file_cli
+      
