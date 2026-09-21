@@ -14,4 +14,9 @@ services:
     container_name: gwas_file_cli
     build:
       dockerfile: gwas_file/Dockerfile-gwas_file_cli
+
+  allsnps_cli:
+    container_name: allsnps_cli
+    build:
+      dockerfile: allsnps/Dockerfile-allsnps_cli
       
