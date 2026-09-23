@@ -19,4 +19,24 @@ services:
     container_name: allsnps_cli
     build:
       dockerfile: allsnps/Dockerfile-allsnps_cli
+
+  magma_cli:
+    container_name: magma_cli
+    build:
+      dockerfile: magma/Dockerfile-magma_cli
+
+  manhattan_filt_cli:
+    container_name: manhattan_filt_cli
+    build:
+      dockerfile: manhattan_filt/Dockerfile-manhattan_filt_cli
+
+  qqsnps_filt_cli:
+    container_name: qqsnps_filt_cli
+    build:
+      dockerfile: qqsnps_filt/Dockerfile-qqsnps_filt_cli
+  
+  getld_cli:
+    container_name: getld_cli
+    build:
+      dockerfile: getld/Dockerfile-getld_cli
       

@@ -85,6 +85,110 @@ def allSNPs(
 			(jobs_dir_on_host, jobs_dir_on_host),
 		],
 )
+ 
+def magma(
+	container_name: str,
+	ref_data_path_on_host: str,
+	jobs_dir_on_host: str,
+	image_name: str,
+	job_location: str,
+) -> None:
+	docker.run(
+		image_name,
+		[
+			"/bin/sh",
+			"-c",
+			(
+				f"python magma.py {job_location}/ "
+				f">>{job_location}/job.log 2>>{job_location}/error.log"
+			),
+		],
+		remove=True,
+		networks=["none"],
+		name=container_name,
+		volumes=[
+			(ref_data_path_on_host, "/data"),
+			(jobs_dir_on_host, jobs_dir_on_host),
+		],
+	)
+ 
+def manhattan_filt(
+	container_name: str,
+	ref_data_path_on_host: str,
+	jobs_dir_on_host: str,
+	image_name: str,
+	job_location: str,
+) -> None:
+	docker.run(
+		image_name,
+		[
+			"/bin/sh",
+			"-c",
+			(
+				f"python manhattan_filt.py {job_location}/ "
+				f">>{job_location}/job.log 2>>{job_location}/error.log"
+			),
+		],
+		remove=True,
+		networks=["none"],
+		name=container_name,
+		volumes=[
+			(ref_data_path_on_host, "/data"),
+			(jobs_dir_on_host, jobs_dir_on_host),
+		],
+	)
+
+def qqsnps_filt(
+	container_name: str,
+	ref_data_path_on_host: str,
+	jobs_dir_on_host: str,
+	image_name: str,
+	job_location: str,
+) -> None:
+	docker.run(
+		image_name,
+		[
+			"/bin/sh",
+			"-c",
+			(
+				f"python QQSNPs_filt.py {job_location}/ "
+				f">>{job_location}/job.log 2>>{job_location}/error.log"
+			),
+		],
+		remove=True,
+		networks=["none"],
+		name=container_name,
+		volumes=[
+			(ref_data_path_on_host, "/data"),
+			(jobs_dir_on_host, jobs_dir_on_host),
+		],
+	)
+ 
+def getld(
+	container_name: str,
+	ref_data_path_on_host: str,
+	jobs_dir_on_host: str,
+	image_name: str,
+	job_location: str,
+) -> None:
+	docker.run(
+		image_name,
+		[
+			"/bin/sh",
+			"-c",
+			(
+				f"python getLD.py {job_location}/ "
+				f">>{job_location}/job.log 2>>{job_location}/error.log"
+			),
+		],
+		remove=True,
+		networks=["none"],
+		name=container_name,
+		volumes=[
+			(ref_data_path_on_host, "/data"),
+			(jobs_dir_on_host, jobs_dir_on_host),
+		],
+	)
 
 def main(args):
     
@@ -95,6 +199,7 @@ def main(args):
     param.read(os.path.join(filedir, 'params.config'))
     
     snp2genegrch38 = param.get('inputfiles', 'snp2genegrch38')
+    run_magma = param.get('magma', 'magma')
     
     if snp2genegrch38 == "1":
         run_find_rsid(
@@ -121,6 +226,39 @@ def main(args):
 		image_name="docker_images-allsnps_cli",
 		job_location=filedir
     )
+    
+    if run_magma == "1":
+        magma(
+			container_name="magma_container",
+			ref_data_path_on_host="/mnt/d/reference_data",
+			jobs_dir_on_host="/fuma_data/users_data",
+			image_name="docker_images-magma_cli",
+			job_location=filedir
+		)
+        
+    manhattan_filt(
+		container_name="manhattan_filt_container",
+		ref_data_path_on_host="/mnt/d/reference_data",
+		jobs_dir_on_host="/fuma_data/users_data",
+		image_name="docker_images-manhattan_filt_cli",
+		job_location=filedir
+	)
+    
+    qqsnps_filt(
+		container_name="qqsnps_filt_container",
+		ref_data_path_on_host="/mnt/d/reference_data",
+		jobs_dir_on_host="/fuma_data/users_data",
+		image_name="docker_images-qqsnps_filt_cli",
+		job_location=filedir
+	)
+    
+    getld(
+		container_name="getld_container",
+		ref_data_path_on_host="/mnt/d/reference_data",
+		jobs_dir_on_host="/fuma_data/users_data",
+		image_name="docker_images-getld_cli",
+		job_location=filedir
+	)
 
 
 if __name__ == "__main__":

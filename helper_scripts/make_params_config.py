@@ -3,11 +3,11 @@ import argparse
 def parse_args(args=None):
     parser = argparse.ArgumentParser(description="Generate pseudonymonized ID.")
     
-    parser.add_argument("--job_folder", required=True, help="REQUIRED. Path to the job folder.")
+    parser.add_argument("--job_folder", default=None, help="REQUIRED. Path to the job folder.")
     
     #optional arguments
     ## inputfiles section
-    parser.add_argument("--snp2genegrch38", default=str(0), help="OPTIONAL. Indicate 1 if the input gwas sumstat is in GRCh38. Default: 0")
+    parser.add_argument("--snp2genegrch38", default=None, help="OPTIONAL. Enter 1 if the input GWAS summary statistics are in GRCh38; otherwise enter 0.")
     parser.add_argument("--chrcol", default="NA", help="OPTIONAL. Column name for chromosome in the input gwas sumstat. Default: NA")
     parser.add_argument("--poscol", default="NA", help="OPTIONAL. Column name for position in the input gwas sumstat. Default: NA")
     parser.add_argument("--rsIDcol", default="NA", help="OPTIONAL. Column name for rsID in the input gwas sumstat. Default: NA")
@@ -22,8 +22,8 @@ def parse_args(args=None):
     parser.add_argument("--regionsfile", default="NA", help="OPTIONAL. Put in input.regions if exists. Default: NA")
     
     ### params section
-    parser.add_argument("--N", default="NA", help="OPTIONAL. Sample size of the GWAS sumstat. Either N or Ncol must be provided, but not both.")
-    parser.add_argument("--Ncol", default="NA", help="OPTIONAL. Column name for sample size in the input gwas sumstat. Either N or Ncol must be provided, but not both.")
+    parser.add_argument("--N", default=None, help="OPTIONAL. Sample size of the GWAS sumstat. Either N or Ncol must be provided, but not both.")
+    parser.add_argument("--Ncol", default=None, help="OPTIONAL. Column name for sample size in the input gwas sumstat. Either N or Ncol must be provided, but not both.")
     parser.add_argument("--exMHC", default="1", help="OPTIONAL. Indicate 0 if you want to include the MHC region in the analysis. Default: 1")
     parser.add_argument("--MHCopt", default="annot", help="OPTIONAL. Indicate either 'annot', 'all', or 'magma' to specify how to handle the MHC region. Default: annot")
     parser.add_argument("--extMHC", default="NA", help="OPTIONAL. User defined MHC region (e.g. 25000000-33000000). When this option is not given, the default MHC region will be used. Default: NA")
@@ -45,8 +45,8 @@ def parse_args(args=None):
     
     ## posMap section
     parser.add_argument("--posMap", default="1", help="OPTIONAL. Indicate if you want to run positional mapping. Default: 1")
-    parser.add_argument("--posMapWindowSize", default="NA", help="OPTIONAL. Distance to genes to map. Default: NA.")
-    parser.add_argument("--posMapAnnot", default="NA", help="OPTIONAL. Functional consequences of SNPs on genes to map. Default: NA. Choose from these options: exonic, splicing, intronic, UTR3, UTR5, upstream, and downstream")
+    parser.add_argument("--posMapWindowSize", default=None, help="OPTIONAL. Distance to genes to map. Default: NA.")
+    parser.add_argument("--posMapAnnot", default=None, help="OPTIONAL. Functional consequences of SNPs on genes to map. Default: NA. Choose from these options: exonic, splicing, intronic, UTR3, UTR5, upstream, and downstream")
     parser.add_argument("--posMapCADDth", default="0", help="OPTIONAL. CADD score threshold for positional mapping. Default: 0")
     parser.add_argument("--posMapRDBth", default="NA", help="OPTIONAL. RegulomeDB score threshold for positional mapping. Default: NA. Choose from these options: 1a, 1b, 1c, 1d, 1e, 1f, 2a, 2b, 2c, 3a, 3b, 4, 5, 6")
     parser.add_argument("--posMapChr15", default="NA") #TODO: add later
@@ -59,10 +59,46 @@ def parse_args(args=None):
 
     parsed_args = parser.parse_args(args)
 
-    parsed_args.N = str(parsed_args.N).strip()
-    parsed_args.Ncol = str(parsed_args.Ncol).strip()
-    parsed_args.posMapWindowSize = str(parsed_args.posMapWindowSize).strip()
-    parsed_args.posMapAnnot = str(parsed_args.posMapAnnot).strip()
+    if parsed_args.job_folder is None:
+        parsed_args.job_folder = input("Enter the job folder path: ").strip()
+    if not parsed_args.job_folder:
+        parser.error("--job_folder is required.")
+
+    if parsed_args.snp2genegrch38 is None:
+        response = input("Is the input GWAS summary statistics in GRCh38? Enter 1 for yes or 0 for no [0]: ").strip()
+        parsed_args.snp2genegrch38 = response if response else "0"
+
+    parsed_args.snp2genegrch38 = str(parsed_args.snp2genegrch38).strip()
+    if parsed_args.snp2genegrch38 not in {"0", "1"}:
+        parser.error("--snp2genegrch38 must be either 0 or 1.")
+
+    if parsed_args.N is None and parsed_args.Ncol is None:
+        response = input("Provide sample size using --N or a sample-size column name using --Ncol. Enter either a numeric N or a column name: ").strip()
+        if response:
+            try:
+                int(response)
+                parsed_args.N = response
+                parsed_args.Ncol = "NA"
+            except ValueError:
+                parsed_args.N = "NA"
+                parsed_args.Ncol = response
+
+    parsed_args.N = str(parsed_args.N).strip() if parsed_args.N is not None else "NA"
+    parsed_args.Ncol = str(parsed_args.Ncol).strip() if parsed_args.Ncol is not None else "NA"
+
+    if parsed_args.posMapWindowSize is None and parsed_args.posMapAnnot is None:
+        response = input("Provide either a positional map window size or a positional annotation. Enter a number for window size or a value such as exonic/upstream: ").strip()
+        if response:
+            try:
+                float(response)
+                parsed_args.posMapWindowSize = response
+                parsed_args.posMapAnnot = "NA"
+            except ValueError:
+                parsed_args.posMapWindowSize = "NA"
+                parsed_args.posMapAnnot = response
+
+    parsed_args.posMapWindowSize = str(parsed_args.posMapWindowSize).strip() if parsed_args.posMapWindowSize is not None else "NA"
+    parsed_args.posMapAnnot = str(parsed_args.posMapAnnot).strip() if parsed_args.posMapAnnot is not None else "NA"
 
     if parsed_args.N.upper() == "NA" and parsed_args.Ncol.upper() == "NA":
         parser.error("Either --N or --Ncol must be supplied, but not both.")
