@@ -241,6 +241,84 @@ def getGWAScatalog(
 			(jobs_dir_on_host, jobs_dir_on_host),
 		],
 	)
+ 
+def geteQTL(
+	container_name: str,
+	ref_data_path_on_host: str,
+	jobs_dir_on_host: str,
+	image_name: str,
+	job_location: str,
+) -> None:
+	docker.run(
+		image_name,
+		[
+			"/bin/sh",
+			"-c",
+			(
+				f"python geteQTL.py {job_location}/ "
+				f">>{job_location}/job.log 2>>{job_location}/error.log"
+			),
+		],
+		remove=True,
+		networks=["none"],
+		name=container_name,
+		volumes=[
+			(ref_data_path_on_host, "/data"),
+			(jobs_dir_on_host, jobs_dir_on_host),
+		],
+	)
+
+def xqtlsMap(
+	container_name: str,
+	ref_data_path_on_host: str,
+	jobs_dir_on_host: str,
+	image_name: str,
+	job_location: str,
+) -> None:
+	docker.run(
+		image_name,
+		[
+			"/bin/sh",
+			"-c",
+			(
+				f"python qtl_map.py {job_location}/ "
+				f">>{job_location}/job.log 2>>{job_location}/error.log"
+			),
+		],
+		remove=True,
+		networks=["none"],
+		name=container_name,
+		volumes=[
+			(ref_data_path_on_host, "/data"),
+			(jobs_dir_on_host, jobs_dir_on_host),
+		],
+	)
+ 
+def getCI(
+	container_name: str,
+	ref_data_path_on_host: str,
+	jobs_dir_on_host: str,
+	image_name: str,
+	job_location: str,
+) -> None:
+	docker.run(
+		image_name,
+		[
+			"/bin/sh",
+			"-c",
+			(
+				f"Rscript getCI.R {job_location}/ "
+				f">>{job_location}/job.log 2>>{job_location}/error.log"
+			),
+		],
+		remove=True,
+		networks=["none"],
+		name=container_name,
+		volumes=[
+			(ref_data_path_on_host, "/data"),
+			(jobs_dir_on_host, jobs_dir_on_host),
+		],
+	)
 
 def main(args):
     
@@ -252,6 +330,9 @@ def main(args):
     
     snp2genegrch38 = param.get('inputfiles', 'snp2genegrch38')
     run_magma = param.get('magma', 'magma')
+    run_eqtls = param.get('eqtlMap', 'eqtlMap')
+    run_xqtls = param.get('xqtlsMap', 'xqtlsMap')
+    run_ci = param.get('ciMap', 'ciMap')
     
     if snp2genegrch38 == "1":
         run_find_rsid(
@@ -327,6 +408,33 @@ def main(args):
 		image_name="docker_images-getgwascatalog_cli",
 		job_location=filedir
 	)
+    
+    if run_eqtls == "1":
+        geteQTL(
+			container_name="geteqtl_container",
+			ref_data_path_on_host="/mnt/d/reference_data",
+			jobs_dir_on_host="/fuma_data/users_data",
+			image_name="docker_images-geteqtl_cli",
+			job_location=filedir
+		)
+    
+    if run_xqtls == "1":
+        xqtlsMap(
+			container_name="qtls_map_container",
+			ref_data_path_on_host="/mnt/d/reference_data",
+			jobs_dir_on_host="/fuma_data/users_data",
+			image_name="docker_images-qtls_map_cli",
+			job_location=filedir
+		)
+
+    if run_ci == "1":
+        getCI(
+			container_name="getci_container",
+			ref_data_path_on_host="/mnt/d/reference_data",
+			jobs_dir_on_host="/fuma_data/users_data",
+			image_name="docker_images-getci_cli",
+			job_location=filedir
+		)
 
 
 if __name__ == "__main__":

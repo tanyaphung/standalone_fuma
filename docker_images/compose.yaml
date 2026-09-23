@@ -49,3 +49,18 @@ services:
     container_name: getgwascatalog_cli
     build:
       dockerfile: get_gwas_catalog/Dockerfile-get_gwas_catalog_cli
+
+  geteqtl_cli:
+    container_name: geteqtl_cli
+    build:
+      dockerfile: geteqtl/Dockerfile-geteqtl_cli
+
+  qtls_map_cli:
+    container_name: qtls_map_cli
+    build:
+      dockerfile: qtls_map/Dockerfile-qtls_map_cli
+
+  getci_cli:
+    container_name: getci_cli
+    build:
+      dockerfile: getci/Dockerfile-getci_cli
