@@ -39,4 +39,13 @@ services:
     container_name: getld_cli
     build:
       dockerfile: getld/Dockerfile-getld_cli
-      
+
+  snpannot_cli:
+    container_name: snpannot_cli
+    build:
+      dockerfile: snpannot/Dockerfile-snpannot_cli
+
+  getgwascatalog_cli:
+    container_name: getgwascatalog_cli
+    build:
+      dockerfile: get_gwas_catalog/Dockerfile-get_gwas_catalog_cli

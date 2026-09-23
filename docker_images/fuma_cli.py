@@ -189,6 +189,58 @@ def getld(
 			(jobs_dir_on_host, jobs_dir_on_host),
 		],
 	)
+ 
+def SNPannot(
+	container_name: str,
+	ref_data_path_on_host: str,
+	jobs_dir_on_host: str,
+	image_name: str,
+	job_location: str,
+) -> None:
+	docker.run(
+		image_name,
+		[
+			"/bin/sh",
+			"-c",
+			(
+				f"Rscript SNPannot.R {job_location}/ "
+				f">>{job_location}/job.log 2>>{job_location}/error.log"
+			),
+		],
+		remove=True,
+		networks=["none"],
+		name=container_name,
+		volumes=[
+			(ref_data_path_on_host, "/data"),
+			(jobs_dir_on_host, jobs_dir_on_host),
+		],
+	)
+ 
+def getGWAScatalog(
+	container_name: str,
+	ref_data_path_on_host: str,
+	jobs_dir_on_host: str,
+	image_name: str,
+	job_location: str,
+) -> None:
+	docker.run(
+		image_name,
+		[
+			"/bin/sh",
+			"-c",
+			(
+				f"python getGWAScatalog.py {job_location}/ "
+				f">>{job_location}/job.log 2>>{job_location}/error.log"
+			),
+		],
+		remove=True,
+		networks=["none"],
+		name=container_name,
+		volumes=[
+			(ref_data_path_on_host, "/data"),
+			(jobs_dir_on_host, jobs_dir_on_host),
+		],
+	)
 
 def main(args):
     
@@ -257,6 +309,22 @@ def main(args):
 		ref_data_path_on_host="/mnt/d/reference_data",
 		jobs_dir_on_host="/fuma_data/users_data",
 		image_name="docker_images-getld_cli",
+		job_location=filedir
+	)
+    
+    SNPannot(
+		container_name="snpannot_container",
+		ref_data_path_on_host="/mnt/d/reference_data",
+		jobs_dir_on_host="/fuma_data/users_data",
+		image_name="docker_images-snpannot_cli",
+		job_location=filedir
+	)
+    
+    getGWAScatalog(
+		container_name="getgwascatalog_container",
+		ref_data_path_on_host="/mnt/d/reference_data",
+		jobs_dir_on_host="/fuma_data/users_data",
+		image_name="docker_images-getgwascatalog_cli",
 		job_location=filedir
 	)
 
