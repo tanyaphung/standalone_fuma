@@ -1,0 +1,336 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Generate params.config file for FUMA CLI</title>
+    <style>
+      body { font-family: Arial, sans-serif; background: #f4f6f8; margin: 0; padding: 2rem; }
+      .container { max-width: 1100px; margin: 0 auto; }
+      .panel { background: #fff; border: 1px solid #dfe3e8; border-radius: 10px; padding: 1rem 1.2rem; margin-bottom: 1rem; }
+      .grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: 1rem; }
+      .field { margin-bottom: 0.8rem; }
+      label { display: block; font-weight: 600; margin-bottom: 0.25rem; }
+      input, select, textarea { width: 100%; padding: 0.55rem 0.7rem; border: 1px solid #cbd5e1; border-radius: 6px; box-sizing: border-box; }
+      textarea { min-height: 100px; resize: vertical; }
+      .small { font-size: 0.8rem; color: #475569; }
+      .actions { display: flex; gap: 0.75rem; margin-top: 1rem; }
+      button { background: #2563eb; color: white; border: none; border-radius: 6px; padding: 0.7rem 1rem; cursor: pointer; }
+      button.secondary { background: #0f172a; }
+      button.clear { background: #e2e8f0; color: #0f172a; border: 1px solid #cbd5e1; }
+      button:disabled { opacity: 0.5; cursor: not-allowed; }
+      pre { background: #0f172a; color: #e2e8f0; padding: 1rem; border-radius: 8px; white-space: pre-wrap; }
+      .error { color: #b42318; background: #fef3f2; border: 1px solid #fecaca; padding: 0.75rem; border-radius: 6px; }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Generate params.config file for FUMA CLI</h1>
+
+      <form method="post" action="/">
+        <div class="panel">
+          <h2>1. Input files specification</h2>
+            <div class="field">
+                <label for="snp2genegrch38">Input file is in GRCh38?</label>
+                <div class="small">If your GWAS input summary statistics are in GRCh38, select "1". Otherwise, leave "0" as default (assuming GRCh37).</div>
+                <select id="snp2genegrch38" name="snp2genegrch38">
+                    <option value="0" {% if values['snp2genegrch38'] == '0' %}selected{% endif %}>0</option>
+                    <option value="1" {% if values['snp2genegrch38'] == '1' %}selected{% endif %}>1</option>
+                </select>
+            </div>
+
+          <h3 style="color:#2563eb">Specify GWAS summary statistics file columns</h3>
+          <div class="small">
+            If your GWAS summary statistics are in GRCh37, you can choose to specify the column names for the additional parameters below.<br>
+            Leave these fields empty if your summary statistics are in GRCh38, or if you want FUMA to automatically detect the column names.
+          </div>
+          <br>
+
+          <div class="field">
+            <label for="chrcol">Chromosome</label>
+            <input id="chrcol" name="chrcol" value="{{ values['chrcol'] }}">
+          </div>
+          <div class="field">
+            <label for="poscol">Position</label>
+            <input id="poscol" name="poscol" value="{{ values['poscol'] }}">
+          </div>
+          <div class="field">
+            <label for="rsIDcol">rsID</label>
+            <input id="rsIDcol" name="rsIDcol" value="{{ values['rsIDcol'] }}">
+          </div>
+          <div class="field">
+            <label for="pcol">P-value</label>
+            <input id="pcol" name="pcol" value="{{ values['pcol'] }}">
+          </div>
+          <div class="field">
+            <label for="eacol">Effect allele</label>
+            <input id="eacol" name="eacol" value="{{ values['eacol'] }}">
+          </div>
+          <div class="field">
+            <label for="neacol">Non effect allele</label>
+            <input id="neacol" name="neacol" value="{{ values['neacol'] }}">
+          </div>
+          <div class="field">
+            <label for="orcol">OR</label>
+            <input id="orcol" name="orcol" value="{{ values['orcol'] }}">
+          </div>
+          <div class="field">
+            <label for="becol">Beta</label>
+            <input id="becol" name="becol" value="{{ values['becol'] }}">
+          </div>
+          <div class="field">
+            <label for="secol">SE</label>
+            <input id="secol" name="secol" value="{{ values['secol'] }}">
+          </div>
+
+          <h3 style="color:#2563eb">Specify if input.lead and/or input.regions are provided</h3>
+          <div class="field">
+            <label for="leadSNPs">Lead SNPs</label>
+            <input id="leadSNPs" name="leadSNPs" value="{{ values['leadSNPs'] }}" placeholder="e.g. input.lead">
+            <div class="small">Enter the filename for the lead SNP list, if provided.</div>
+          </div>
+
+          <div class="field">
+            <label for="addleadSNPs">Identify additional independent lead SNPs</label>
+            <input type="checkbox" id="addleadSNPs" name="addleadSNPs" value="1" {% if values.get('addleadSNPs', '1') == '1' %}checked{% endif %}>
+            <div class="small">Check this to let FUMA identify additional lead SNPs after taking all SNPs in LD of pre-defined lead SNPs.</div>
+          </div>
+
+          <div class="field">
+            <label for="regions">Regions</label>
+            <input id="regions" name="regions" value="{{ values['regions'] }}" placeholder="e.g. input.regions">
+            <div class="small">Enter the filename for the region list, if provided.</div>
+          </div>
+        </div>
+
+        <div class="panel">
+          <h2>2. Parameters for lead SNPs and candidate SNPs identification</h2>
+            <div style="color:  red">Provide either N or Ncol, but not both.</div>
+            <div class="field">
+                <label for="N">Total sample size (integer)</label>
+                <input type="number" id="N" name="N" value="{{ values['N'] if values['N'] != 'NA' else '' }}" placeholder="Optional">
+            </div>
+            <div class="field">
+                <label for="Ncol">Column name for N per SNP</label>
+                <input type="text" id="Ncol" name="Ncol" value="{{ values['Ncol'] if values['Ncol'] != 'NA' else '' }}" placeholder="Optional">
+            </div>
+            
+            <h3 style="color:#2563eb">Optional parameters:</h3>
+            <div class="field">
+                <label for="leadP">Maximum P-value of lead SNPs (<)</label>
+                <input id="leadP" name="leadP" value="{{ values['leadP'] }}">
+            </div>
+            
+            <div class="field">
+                <label for="gwasP">Maximum P-value cutoff (<)</label>
+                <input id="gwasP" name="gwasP" value="{{ values['gwasP'] }}">
+            </div>
+
+            <div class="field">
+                <label for="r2">r<sup>2</sup> threshold to define independent significant SNPs (≥)</label>
+                <input id="r2" name="r2" value="{{ values['r2'] }}">
+            </div>
+
+            <div class="field">
+                <label for="r2_2">2nd r<sup>2</sup> threshold to define lead SNPs (≥)</label>
+                <input id="r2_2" name="r2_2" value="{{ values['r2_2'] }}">
+            </div>
+
+            <div class="field">
+                <label for="pop">Reference panel population</label>
+                <select id="pop" name="pop">
+                    <option value="ALL" {% if values['pop'] == 'ALL' %}selected{% endif %}>ALL</option>
+                    <option value="AFR" {% if values['pop'] == 'AFR' %}selected{% endif %}>AFR</option>
+                    <option value="AMR" {% if values['pop'] == 'AMR' %}selected{% endif %}>AMR</option>
+                    <option value="EAS" {% if values['pop'] == 'EAS' %}selected{% endif %}>EAS</option>
+                    <option value="EUR" {% if values['pop'] == 'EUR' %}selected{% endif %}>EUR</option>
+                    <option value="SAS" {% if values['pop'] == 'SAS' %}selected{% endif %}>SAS</option>
+                </select>
+            </div>
+
+            <div class="field">
+                <label for="refSNPs">Include variants in reference panel (non-GWAS tagged SNPs in LD) 	</label>
+                <select id="refSNPs" name="refSNPs">
+                  <option value="0" {% if values['refSNPs'] == '0' %}selected{% endif %}>0</option>
+                  <option value="1" {% if values['refSNPs'] == '1' %}selected{% endif %}>1</option>
+                </select>
+            </div>
+
+            <div class="field">
+                <label for="MAF">Minimum Minor Allele Frequency (≥)</label>
+                <input id="MAF" name="MAF" value="{{ values['MAF'] }}">
+            </div>
+
+            <div class="field">
+                <label for="mergeDist">Maximum distance between LD blocks to merge into a locus (< kb)</label>
+                <input id="mergeDist" name="mergeDist" value="{{ values['mergeDist'] }}">
+            </div>
+        </div>
+
+        <div class="panel">
+          <h2>3.1. Gene Mapping (positional mapping)</h2>
+            <div class="field">
+                <label for="posMap">Perform positional mapping</label>
+                <select id="posMap" name="posMap">
+                  <option value="0" {% if values['posMap'] == '0' %}selected{% endif %}>0</option>
+                  <option value="1" {% if values['posMap'] == '1' %}selected{% endif %}>1</option>
+                </select>
+            </div>
+            <div style="color:  red">Provide the maximum distance (integer) or select functional consequences of SNPs on gene </div>
+            <div class="field">
+                <label for="posMapWindowSize">Maximum distance (kb):</label>
+                <input type="number" id="posMapWindowSize" name="posMapWindowSize" value="{{ values['posMapWindowSize'] if values['posMapWindowSize'] != 'NA' else '' }}" placeholder="Optional">
+            </div>
+            <div class="field">
+                <label for="posMapAnnot">Functional consequences of SNPs on genes:</label>
+                <select id="posMapAnnot" name="posMapAnnot" multiple size="7">
+                {% set selected_pos_map_annot = values.get('posMapAnnot', '').split(':') if values.get('posMapAnnot') else [] %}
+                <option value="exonic" {% if 'exonic' in selected_pos_map_annot %}selected{% endif %}>exonic</option>
+                <option value="splicing" {% if 'splicing' in selected_pos_map_annot %}selected{% endif %}>splicing</option>
+                <option value="intronic" {% if 'intronic' in selected_pos_map_annot %}selected{% endif %}>intronic</option>
+                <option value="UTR3" {% if 'UTR3' in selected_pos_map_annot %}selected{% endif %}>UTR3</option>
+                <option value="UTR5" {% if 'UTR5' in selected_pos_map_annot %}selected{% endif %}>UTR5</option>
+                <option value="upstream" {% if 'upstream' in selected_pos_map_annot %}selected{% endif %}>upstream</option>
+                <option value="downstream" {% if 'downstream' in selected_pos_map_annot %}selected{% endif %}>downstream</option>
+                </select>
+                <div class="small">Hold Ctrl/Cmd to select multiple annotations, or use the colon-delimited format in the generated config.</div>
+            </div>
+        </div>
+
+        <div class="panel">
+          <h2>3.2. Gene Mapping (xQTL mapping)</h2>
+            <div class="field">
+                <label for="xqtlsMap">Perform xQTLs mapping</label>
+                <select id="xqtlsMap" name="xqtlsMap">
+                    <option value="0" {% if values['xqtlsMap'] == '0' %}selected{% endif %}>0</option>
+                    <option value="1" {% if values['xqtlsMap'] == '1' %}selected{% endif %}>1</option>
+                </select>
+            </div>
+            <div class="field">
+                <label for="xqtlsMapdss">Select xQTLs datasets:</label>
+                <select id="xqtlsMapdss" name="xqtlsMapdss" multiple size="2">
+                    <option value="eQTL/gtex_v10/sig_pairs/Adipose_Subcutaneous.txt.gz" {% if values.get('xqtlsMapdss') and 'eQTL/gtex_v10/sig_pairs/Adipose_Subcutaneous.txt.gz' in values['xqtlsMapdss'].split(':') %}selected{% endif %}>eQTL/gtex_v10/Adipose_Subcutaneous</option>
+                    <option value="eQTL/gtex_v10/sig_pairs/Adipose_Visceral_Omentum.txt.gz" {% if values.get('xqtlsMapdss') and 'eQTL/gtex_v10/sig_pairs/Adipose_Visceral_Omentum.txt.gz' in values['xqtlsMapdss'].split(':') %}selected{% endif %}>eQTL/gtex_v10/Adipose_Visceral_Omentum</option>
+                </select>
+                <div class="small">Hold Ctrl/Cmd to select multiple datasets, or use the colon-delimited format in the generated config.</div>
+            </div>
+        </div>
+
+        <div class="panel">
+          <h2>Gene analysis settings</h2>
+          <div class="field">
+            <label for="magma">magma</label>
+            <select id="magma" name="magma">
+              <option value="0" {% if values['magma'] == '0' %}selected{% endif %}>0</option>
+              <option value="1" {% if values['magma'] == '1' %}selected{% endif %}>1</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="magma_window">magma_window</label>
+            <input id="magma_window" name="magma_window" value="{{ values['magma_window'] }}">
+          </div>
+          <div class="field">
+            <label for="magma_exp">magma_exp</label>
+            <textarea id="magma_exp" name="magma_exp">{{ values['magma_exp'] }}</textarea>
+          </div>
+        </div>
+
+        <div class="actions">
+          <button type="submit" id="generateBtn">Generate config</button>
+          <button type="button" class="clear" onclick="resetFormToDefaults();">Clear</button>
+          <button type="submit" formaction="/download" formmethod="post" class="secondary">Download params.config</button>
+        </div>
+      </form>
+
+      <script>
+        function resetFormToDefaults() {
+          const form = document.querySelector('form');
+          const defaults = {
+            snp2genegrch38: '0',
+            chrcol: '',
+            poscol: '',
+            rsIDcol: '',
+            pcol: '',
+            eacol: '',
+            neacol: '',
+            orcol: '',
+            becol: '',
+            secol: '',
+            leadSNPs: '',
+            addleadSNPs: true,
+            regions: '',
+            N: '',
+            Ncol: '',
+            leadP: '5e-8',
+            gwasP: '0.05',
+            r2: '0.6',
+            r2_2: '0.1',
+            pop: 'EUR',
+            refSNPs: '1',
+            MAF: '0',
+            mergeDist: '250',
+            posMap: '1',
+            posMapWindowSize: '',
+            posMapAnnot: [],
+            magma: '0',
+            magma_window: '0',
+            magma_exp: 'GTEx_v8/Brain_Amygdala.txt.gz:GTEx_v8/Brain_Anterior_cingulate_cortex_BA24.txt.gz'
+          };
+
+          Object.entries(defaults).forEach(([key, value]) => {
+            const field = form.elements[key];
+            if (!field) return;
+
+            if (field.type === 'checkbox') {
+              field.checked = Boolean(value);
+            } else if (field.tagName === 'SELECT' && field.multiple) {
+              Array.from(field.options).forEach((option) => {
+                option.selected = Array.isArray(value) && value.includes(option.value);
+              });
+            } else {
+              field.value = value;
+            }
+          });
+
+          validateNFields();
+        }
+
+        function validateNFields() {
+          const nField = document.getElementById('N');
+          const ncolField = document.getElementById('Ncol');
+          const generateBtn = document.getElementById('generateBtn');
+          const nFilled = nField.value.trim() !== '';
+          const ncolFilled = ncolField.value.trim() !== '';
+          const valid = (nFilled || ncolFilled) && !(nFilled && ncolFilled);
+          generateBtn.disabled = !valid;
+          if (!valid) {
+            generateBtn.title = 'Provide either N or Ncol, but not both.';
+          } else {
+            generateBtn.title = '';
+          }
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+          const nField = document.getElementById('N');
+          const ncolField = document.getElementById('Ncol');
+          [nField, ncolField].forEach((field) => {
+            field.addEventListener('input', validateNFields);
+            field.addEventListener('change', validateNFields);
+          });
+          validateNFields();
+        });
+      </script>
+
+      {% if error %}
+        <div class="panel error">{{ error }}</div>
+      {% endif %}
+
+      {% if config_text %}
+        <div class="panel">
+          <h2>Generated params.config</h2>
+          <pre>{{ config_text }}</pre>
+        </div>
+      {% endif %}
+    </div>
+  </body>
+</html>
