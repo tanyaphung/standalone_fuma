@@ -36,7 +36,7 @@ DEFAULTS = {
     "mergeDist": "250",
     "magma": "0",
     "magma_window": "0",
-    "magma_exp": "GTEx_v8/Brain_Amygdala.txt.gz:GTEx_v8/Brain_Anterior_cingulate_cortex_BA24.txt.gz",
+    "magma_exp": 'GTEx/v8/gtex_v8_ts_avg_log2TPM:GTEx/v8/gtex_v8_ts_general_avg_log2TPM',
     "posMap": "1",
     "posMapWindowSize": "NA",
     "posMapAnnot": "NA",

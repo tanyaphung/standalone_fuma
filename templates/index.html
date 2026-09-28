@@ -208,30 +208,108 @@
             </div>
             <div class="field">
                 <label for="xqtlsMapdss">Select xQTLs datasets:</label>
-                <select id="xqtlsMapdss" name="xqtlsMapdss" multiple size="2">
-                    <option value="eQTL/gtex_v10/sig_pairs/Adipose_Subcutaneous.txt.gz" {% if values.get('xqtlsMapdss') and 'eQTL/gtex_v10/sig_pairs/Adipose_Subcutaneous.txt.gz' in values['xqtlsMapdss'].split(':') %}selected{% endif %}>eQTL/gtex_v10/Adipose_Subcutaneous</option>
-                    <option value="eQTL/gtex_v10/sig_pairs/Adipose_Visceral_Omentum.txt.gz" {% if values.get('xqtlsMapdss') and 'eQTL/gtex_v10/sig_pairs/Adipose_Visceral_Omentum.txt.gz' in values['xqtlsMapdss'].split(':') %}selected{% endif %}>eQTL/gtex_v10/Adipose_Visceral_Omentum</option>
-                </select>
+                {% include 'xqtls_map_datasets.html' %}
                 <div class="small">Hold Ctrl/Cmd to select multiple datasets, or use the colon-delimited format in the generated config.</div>
+            </div>
+            <h5 style="background-color:gray;">Legacy: Starting from FUMA v.2.0.0, this functionality of eQTL Mapping is kept for backward compatibility. To make adding new QTL datasets easier to FUMA, a new functionality below (Perform xQTLs Mapping) is added. You can still use this functionality to carry out analysis as before but new QTL datasets will only be added to the xQTLs Mapping functionality.</h5>
+            <div class="field">
+              <label for="eqtlMap">Perform eQTLs mapping</label>
+              <select id="eqtlMap" name="eqtlMap">
+                  <option value="0" {% if values['eqtlMap'] == '0' %}selected{% endif %}>0</option>
+                  <option value="1" {% if values['eqtlMap'] == '1' %}selected{% endif %}>1</option>
+              </select>
+          </div>
+          <div class="field">
+              <label for="eqtlMapdss">Select eQTLs datasets:</label>
+              {% include 'fumav1_eqtls_map_datasets.html' %}
+              <div class="small">Hold Ctrl/Cmd to select multiple datasets, or use the colon-delimited format in the generated config.</div>
+          </div>
+        </div>
+
+        <div class="panel">
+          <h2>3.3. Gene Mapping (3D Chromatin Interaction mapping)</h2>
+            <div class="field">
+                <label for="ciMap">Perform chromatin interaction mapping</label>
+                <select id="ciMap" name="ciMap">
+                  <option value="0" {% if values['ciMap'] == '0' %}selected{% endif %}>0</option>
+                  <option value="1" {% if values['ciMap'] == '1' %}selected{% endif %}>1</option>
+                </select>
+            </div>
+            <div class="field">
+                <label for="ciMapBuiltin">Build-in Hi-C data</label>
+                {% include 'ci_map_datasets.html' %}
+              <div class="small">Hold Ctrl/Cmd to select multiple datasets, or use the colon-delimited format in the generated config.</div>
             </div>
         </div>
 
         <div class="panel">
-          <h2>Gene analysis settings</h2>
+          <h2>4. Gene types</h2>
           <div class="field">
-            <label for="magma">magma</label>
+                <label for="genetype">Functional consequences of SNPs on genes:</label>
+                <select id="genetype" name="genetype" multiple size="7">
+                {% set genetype = values.get('genetype', '').split(':') if values.get('genetype') else [] %}
+                <option value="all" {% if 'all' in genetype %}selected{% endif %}>All</option>
+                <option value="protein_coding" {% if 'protein_coding' in genetype %}selected{% endif %}>Protein coding</option>
+                <option value="lincRNA:antisense:retained_intronic:sense_intronic:sense_overlapping:macro_lncRNA" {% if 'lincRNA:antisense:retained_intronic:sense_intronic:sense_overlapping:macro_lncRNA' in selected_pos_map_annot %}selected{% endif %}>lncRNA</option>
+                <option value="miRNA:piRNA:rRNA:siRNA:snRNA:snoRNA:tRNA:vaultRNA" {% if 'miRNA:piRNA:rRNA:siRNA:snRNA:snoRNA:tRNA:vaultRNA' in genetype %}selected{% endif %}>ncRNA</option>
+                <option value="lincRNA:antisense:retained_intronic:sense_intronic:sense_overlapping:3prime_overlapping_ncrna:macro_lncRNA:miRNA:piRNA:rRNA:siRNA:snRNA:snoRNA:tRNA:vaultRNA:processed_transcript" {% if 'lincRNA:antisense:retained_intronic:sense_intronic:sense_overlapping:3prime_overlapping_ncrna:macro_lncRNA:miRNA:piRNA:rRNA:siRNA:snRNA:snoRNA:tRNA:vaultRNA:processed_transcript' in genetype %}selected{% endif %}>Processed transcripts</option>
+                <option value="pseudogene:processed_pseudogene:unprocessed_pseudogene:polymorphic_pseudogene:IG_C_pseudogene:IG_D_pseudogene:ID_V_pseudogene:IG_J_pseudogene:TR_C_pseudogene:TR_D_pseudogene:TR_V_pseudogene:TR_J_pseudogene" {% if 'pseudogene:processed_pseudogene:unprocessed_pseudogene:polymorphic_pseudogene:IG_C_pseudogene:IG_D_pseudogene:ID_V_pseudogene:IG_J_pseudogene:TR_C_pseudogene:TR_D_pseudogene:TR_V_pseudogene:TR_J_pseudogene' in genetype %}selected{% endif %}>Pseudogene</option>
+                <option value="IG_C_gene:TG_D_gene:TG_V_gene:IG_J_gene" {% if 'IG_C_gene:TG_D_gene:TG_V_gene:IG_J_gene' in genetype %}selected{% endif %}>IG genes</option>
+                <option value="TR_C_gene:TR_D_gene:TR_V_gene:TR_J_gene" {% if 'TR_C_gene:TR_D_gene:TR_V_gene:TR_J_gene' in genetype %}selected{% endif %}>TR genes</option>
+                <div class="small">Hold Ctrl/Cmd to select multiple datasets, or use the colon-delimited format in the generated config.</div>
+                </select>
+            </div>
+        </div>
+
+        <div class="panel">
+          <h2>5. MHC region</h2>
+          <div class="field">
+            <label for="exMHC">Exclude MHC region?</label>
+            <select id="exMHC" name="exMHC">
+              <option value="0" {% if values['exMHC'] == '0' %}selected{% endif %}>0</option>
+              <option value="1" {% if values['exMHC'] == '1' %}selected{% endif %}>1</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="MHCopt">MHC option</label>
+            <select id="MHCopt" name="MHCopt">
+              <option value="all" {% if values.get('MHCopt') == 'all' %}selected{% endif %}>from all (annotations and MAGMA)</option>
+              <option value="annot" {% if values.get('MHCopt', 'annot') == 'annot' %}selected{% endif %}>annot</option>
+              <option value="magma" {% if values.get('MHCopt') == 'magma' %}selected{% endif %}>from only MAGMA</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="extMHCregion">Extended MHC region </label>
+            <input id="extMHCregion" name="extMHCregion" value="{{ values['extMHCregion'] }}" placeholder="Optional. Example: 25000000-33000000">
+          </div>
+        </div>
+
+        <div class="panel">
+          <h2>6. MAGMA analysis</h2>
+          <div class="field">
+            <label for="magma">Perform MAGMA?</label>
             <select id="magma" name="magma">
               <option value="0" {% if values['magma'] == '0' %}selected{% endif %}>0</option>
               <option value="1" {% if values['magma'] == '1' %}selected{% endif %}>1</option>
             </select>
           </div>
           <div class="field">
-            <label for="magma_window">magma_window</label>
+            <label for="magma_window">Gene windows</label>
+            <text style="color:gray">One value will set same window size both sides, two values separated by comma will set different window sizes for up- and downstream. e.g. 2,1 will set window sizes 2kb upstream and 1kb downstream of the genes.</text>
+            <br>
+            <text style="color:gray">Maximum window size is limited to 50.</text>
             <input id="magma_window" name="magma_window" value="{{ values['magma_window'] }}">
           </div>
+
           <div class="field">
-            <label for="magma_exp">magma_exp</label>
-            <textarea id="magma_exp" name="magma_exp">{{ values['magma_exp'] }}</textarea>
+              <label for="magma_exp">MAGMA gene expression analysis</label>
+              <select id="magma_exp" name="magma_exp" multiple size="4">
+              {% set magma_exp = values.get('magma_exp', 'GTEx/v8/gtex_v8_ts_avg_log2TPM:GTEx/v8/gtex_v8_ts_general_avg_log2TPM').split(':') if values.get('magma_exp') else ['GTEx/v8/gtex_v8_ts_avg_log2TPM', 'GTEx/v8/gtex_v8_ts_general_avg_log2TPM'] %}
+              <option value="GTEx/v8/gtex_v8_ts_avg_log2TPM" {% if 'GTEx/v8/gtex_v8_ts_avg_log2TPM' in magma_exp %}selected{% endif %}>GTEx v8: 54  tissue types</option>
+              <option value="GTEx/v8/gtex_v8_ts_general_avg_log2TPM" {% if 'GTEx/v8/gtex_v8_ts_general_avg_log2TPM' in magma_exp %}selected{% endif %}>GTEx v8: 30 general tissue types</option>
+              <option value="BrainSpan/bs_age_avg_log2RPKM" {% if 'BrainSpan/bs_age_avg_log2RPKM' in magma_exp %}selected{% endif %}>BrainSpan: 29 different ages of brain samples</option>
+              <option value="BrainSpan/bs_dev_avg_log2RPKM" {% if 'BrainSpan/bs_dev_avg_log2RPKM' in magma_exp %}selected{% endif %}>BrainSpan: 11 general developmental stages of brain samples</option>
+              </select>
           </div>
         </div>
 
@@ -274,7 +352,7 @@
             posMapAnnot: [],
             magma: '0',
             magma_window: '0',
-            magma_exp: 'GTEx_v8/Brain_Amygdala.txt.gz:GTEx_v8/Brain_Anterior_cingulate_cortex_BA24.txt.gz'
+            magma_exp: 'GTEx/v8/gtex_v8_ts_avg_log2TPM:GTEx/v8/gtex_v8_ts_general_avg_log2TPM'
           };
 
           Object.entries(defaults).forEach(([key, value]) => {
