@@ -319,7 +319,59 @@ def getCI(
 			(jobs_dir_on_host, jobs_dir_on_host),
 		],
 	)
-
+ 
+def geneMap(
+	container_name: str,
+	ref_data_path_on_host: str,
+	jobs_dir_on_host: str,
+	image_name: str,
+	job_location: str,
+) -> None:
+	docker.run(
+		image_name,
+		[
+			"/bin/sh",
+			"-c",
+			(
+				f"Rscript geneMap.R {job_location}/ "
+				f">>{job_location}/job.log 2>>{job_location}/error.log"
+			),
+		],
+		remove=True,
+		networks=["none"],
+		name=container_name,
+		volumes=[
+			(ref_data_path_on_host, "/data"),
+			(jobs_dir_on_host, jobs_dir_on_host),
+		],
+	)
+ 
+def create_circos_plot(
+    container_name: str,
+	ref_data_path_on_host: str,
+	jobs_dir_on_host: str,
+	image_name: str,
+	job_location: str,
+) -> None:
+	docker.run(
+		image_name,
+		[
+			"/bin/sh",
+			"-c",
+			(
+				f"python createCircosPlot.py {job_location}/ "
+				f">>{job_location}/job.log 2>>{job_location}/error.log"
+			),
+		],
+		remove=True,
+		networks=["none"],
+		name=container_name,
+		volumes=[
+			(ref_data_path_on_host, "/data"),
+			(jobs_dir_on_host, jobs_dir_on_host),
+		],
+	)
+ 
 def main(args):
     
     filedir = args.filedir
@@ -435,7 +487,23 @@ def main(args):
 			image_name="docker_images-getci_cli",
 			job_location=filedir
 		)
-
+        
+    geneMap(
+		container_name="genemap_container",
+		ref_data_path_on_host="/mnt/d/reference_data",
+		jobs_dir_on_host="/fuma_data/users_data",
+		image_name="docker_images-genemap_cli",
+		job_location=filedir
+	)
+    
+    if run_ci == "1":
+        create_circos_plot(
+			container_name="create_circos_plot_container",
+			ref_data_path_on_host="/mnt/d/reference_data",
+			jobs_dir_on_host="/fuma_data/users_data",
+			image_name="docker_images-create_circos_plot_cli",
+			job_location=filedir
+		)
 
 if __name__ == "__main__":
     main(parse_params())

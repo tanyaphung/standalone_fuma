@@ -64,3 +64,13 @@ services:
     container_name: getci_cli
     build:
       dockerfile: getci/Dockerfile-getci_cli
+
+  genemap_cli:
+    container_name: genemap_cli
+    build:
+      dockerfile: genemap/Dockerfile-genemap_cli
+
+  create_circos_plot_cli:
+    container_name: create_circos_plot_cli
+    build:
+      dockerfile: create_circos_plot/Dockerfile-create_circos_plot_cli
