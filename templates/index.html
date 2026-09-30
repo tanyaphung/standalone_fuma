@@ -195,6 +195,267 @@
                 </select>
                 <div class="small">Hold Ctrl/Cmd to select multiple annotations, or use the colon-delimited format in the generated config.</div>
             </div>
+
+            <h3>Optional SNP filtering by functional annotations for positional mapping</h3>
+            <h4 style="color:#2563eb">CADD</h4>
+            <div class="field">
+                <label for="posMapCADDcheck">Perform SNPs filtering based on CADD score</label>
+                <select id="posMapCADDcheck" name="posMapCADDcheck">
+                    <option value="0" {% if values['posMapCADDcheck'] == '0' %}selected{% endif %}>0</option>
+                    <option value="1" {% if values['posMapCADDcheck'] == '1' %}selected{% endif %}>1</option>
+                </select>
+            </div>
+            <div class="field">
+                <label for="posMapCADDth">Minimum CADD score (≥)</label>
+              <input id="posMapCADDth" name="posMapCADDth" value="{{ '0' if values['posMapCADDcheck'] == '0' else values['posMapCADDth'] }}">
+            </div>
+            <h4 style="color:#2563eb">RegulomeDB</h4>
+            <div class="field">
+                <label for="posMapRDBcheck">Perform SNPs filtering based on RegulomeDB score</label>
+                <select id="posMapRDBcheck" name="posMapRDBcheck">
+                    <option value="0" {% if values['posMapRDBcheck'] == '0' %}selected{% endif %}>0</option>
+                    <option value="1" {% if values['posMapRDBcheck'] == '1' %}selected{% endif %}>1</option>
+                </select>
+            </div>
+            <div class="field">
+                <label for="posMapRDBth">Maximum RegulomeDB score (categorical) </label>
+                <select id="posMapRDBth" name="posMapRDBth">
+                  <option value="NA" {% if values['posMapRDBcheck'] == '0' or values['posMapRDBth'] == 'NA' %}selected{% endif %}>NA</option>
+                  <option value="1a" {% if values['posMapRDBcheck'] == '1' and values['posMapRDBth'] == '1a' %}selected{% endif %}>1a</option>
+                  <option value="1b" {% if values['posMapRDBcheck'] == '1' and values['posMapRDBth'] == '1b' %}selected{% endif %}>1b</option>
+                  <option value="1c" {% if values['posMapRDBcheck'] == '1' and values['posMapRDBth'] == '1c' %}selected{% endif %}>1c</option>
+                  <option value="1d" {% if values['posMapRDBcheck'] == '1' and values['posMapRDBth'] == '1d' %}selected{% endif %}>1d</option>
+                  <option value="1e" {% if values['posMapRDBcheck'] == '1' and values['posMapRDBth'] == '1e' %}selected{% endif %}>1e</option>
+                  <option value="1f" {% if values['posMapRDBcheck'] == '1' and values['posMapRDBth'] == '1f' %}selected{% endif %}>1f</option>
+                  <option value="2a" {% if values['posMapRDBcheck'] == '1' and values['posMapRDBth'] == '2a' %}selected{% endif %}>2a</option>
+                  <option value="2b" {% if values['posMapRDBcheck'] == '1' and values['posMapRDBth'] == '2b' %}selected{% endif %}>2b</option>
+                  <option value="2c" {% if values['posMapRDBcheck'] == '1' and values['posMapRDBth'] == '2c' %}selected{% endif %}>2c</option>
+                  <option value="3a" {% if values['posMapRDBcheck'] == '1' and values['posMapRDBth'] == '3a' %}selected{% endif %}>3a</option>
+                  <option value="3b" {% if values['posMapRDBcheck'] == '1' and values['posMapRDBth'] == '3b' %}selected{% endif %}>3b</option>
+                  <option value="4" {% if values['posMapRDBcheck'] == '1' and values['posMapRDBth'] == '4' %}selected{% endif %}>4</option>
+                  <option value="5" {% if values['posMapRDBcheck'] == '1' and values['posMapRDBth'] == '5' %}selected{% endif %}>5</option>
+                  <option value="6" {% if values['posMapRDBcheck'] == '1' and values['posMapRDBth'] == '6' %}selected{% endif %}>6</option>
+                  <option value="7" {% if values['posMapRDBcheck'] == '1' and (values['posMapRDBth'] == '7' or values['posMapRDBth'] == 'NA') %}selected{% endif %}>7</option>
+                  </select>
+            </div>
+
+            <h4 style="color:#2563eb">15-core chromatin state</h4>
+            <div class="field">
+                <label for="posMapChr15check">Perform SNPs filtering based on chromatin state</label>
+                <select id="posMapChr15check" name="posMapChr15check">
+                    <option value="0" {% if values['posMapChr15check'] == '0' %}selected{% endif %}>0</option>
+                    <option value="1" {% if values['posMapChr15check'] == '1' %}selected{% endif %}>1</option>
+                </select>
+            </div>
+            <div class="field">
+                <label for="posMapChr15Ts">Tissue/cell types for 15-core chromatin state</label>
+                <text>If you select performing SNPs filtering based on chromatin state, please select the tissue/cell types for 15-core chromatin state</text>
+                <select id="posMapChr15Ts" name="posMapChr15Ts" multiple size="7">
+                  {% set selected_pos_map_annot = values.get('posMapChr15Ts', '').split(':') if values.get('posMapChr15Ts') else [] %}
+                  <option value="E080" {% if 'E080' in selected_pos_map_annot %}selected{% endif %}>E080 (Other) Fetal Adrenal Gland</option>
+                  <option value="E029" {% if 'E029' in selected_pos_map_annot %}selected{% endif %}>E029 (HSC &amp; B-cell) Primary monocytes from peripheral blood</option>
+                  <option value="E030" {% if 'E030' in selected_pos_map_annot %}selected{% endif %}>E030 (HSC &amp; B-cell) Primary neutrophils from peripheral blood</option>
+                  <option value="E031" {% if 'E031' in selected_pos_map_annot %}selected{% endif %}>E031 (HSC &amp; B-cell) Primary B cells from cord blood</option>
+                  <option value="E032" {% if 'E032' in selected_pos_map_annot %}selected{% endif %}>E032 (HSC &amp; B-cell) Primary B cells from peripheral blood</option>
+                  <option value="E033" {% if 'E033' in selected_pos_map_annot %}selected{% endif %}>E033 (Blood &amp; T-cell) Primary T cells from cord blood</option>
+                  <option value="E034" {% if 'E034' in selected_pos_map_annot %}selected{% endif %}>E034 (Blood &amp; T-cell) Primary T cells from peripheral blood</option>
+                  <option value="E035" {% if 'E035' in selected_pos_map_annot %}selected{% endif %}>E035 (HSC &amp; B-cell) Primary hematopoietic stem cells</option>
+                  <option value="E036" {% if 'E036' in selected_pos_map_annot %}selected{% endif %}>E036 (HSC &amp; B-cell) Primary hematopoietic stem cells short term culture</option>
+                  <option value="E037" {% if 'E037' in selected_pos_map_annot %}selected{% endif %}>E037 (Blood &amp; T-cell) Primary T helper memory cells from peripheral blood 2</option>
+                  <option value="E038" {% if 'E038' in selected_pos_map_annot %}selected{% endif %}>E038 (Blood &amp; T-cell) Primary T helper naive cells from peripheral blood</option>
+                  <option value="E039" {% if 'E039' in selected_pos_map_annot %}selected{% endif %}>E039 (Blood &amp; T-cell) Primary T helper naive cells from peripheral blood</option>
+                  <option value="E040" {% if 'E040' in selected_pos_map_annot %}selected{% endif %}>E040 (Blood &amp; T-cell) Primary T helper memory cells from peripheral blood 1</option>
+                  <option value="E041" {% if 'E041' in selected_pos_map_annot %}selected{% endif %}>E041 (Blood &amp; T-cell) Primary T helper cells PMA-I stimulated</option>
+                  <option value="E042" {% if 'E042' in selected_pos_map_annot %}selected{% endif %}>E042 (Blood &amp; T-cell) Primary T helper 17 cells PMA-I stimulated</option>
+                  <option value="E043" {% if 'E043' in selected_pos_map_annot %}selected{% endif %}>E043 (Blood &amp; T-cell) Primary T helper cells from peripheral blood</option>
+                  <option value="E044" {% if 'E044' in selected_pos_map_annot %}selected{% endif %}>E044 (Blood &amp; T-cell) Primary T regulatory cells from peripheral blood</option>
+                  <option value="E045" {% if 'E045' in selected_pos_map_annot %}selected{% endif %}>E045 (Blood &amp; T-cell) Primary T cells effector/memory enriched from peripheral blood</option>
+                  <option value="E046" {% if 'E046' in selected_pos_map_annot %}selected{% endif %}>E046 (HSC &amp; B-cell) Primary Natural Killer cells from peripheral blood</option>
+                  <option value="E047" {% if 'E047' in selected_pos_map_annot %}selected{% endif %}>E047 (Blood &amp; T-cell) Primary T CD8+ naive cells from peripheral blood</option>
+                  <option value="E048" {% if 'E048' in selected_pos_map_annot %}selected{% endif %}>E048 (Blood &amp; T-cell) Primary T CD8+ memory cells from peripheral blood</option>
+                  <option value="E050" {% if 'E050' in selected_pos_map_annot %}selected{% endif %}>E050 (HSC &amp; B-cell) Primary hematopoietic stem cells G-CSF-mobilized Female</option>
+                  <option value="E051" {% if 'E051' in selected_pos_map_annot %}selected{% endif %}>E051 (HSC &amp; B-cell) Primary hematopoietic stem cells G-CSF-mobilized Male</option>
+                  <option value="E062" {% if 'E062' in selected_pos_map_annot %}selected{% endif %}>E062 (Blood &amp; T-cell) Primary mononuclear cells from peripheral blood</option>
+                  <option value="E115" {% if 'E115' in selected_pos_map_annot %}selected{% endif %}>E115 (ENCODE2012) Dnd41 TCell Leukemia Cell Line</option>
+                  <option value="E116" {% if 'E116' in selected_pos_map_annot %}selected{% endif %}>E116 (ENCODE2012) GM12878 Lymphoblastoid Cells</option>
+                  <option value="E123" {% if 'E123' in selected_pos_map_annot %}selected{% endif %}>E123 (ENCODE2012) K562 Leukemia Cells</option>
+                  <option value="E124" {% if 'E124' in selected_pos_map_annot %}selected{% endif %}>E124 (ENCODE2012) Monocytes-CD14+ RO01746 Primary Cells</option>
+                  <option value="E129" {% if 'E129' in selected_pos_map_annot %}selected{% endif %}>E129 (ENCODE2012) Osteoblast Primary Cells</option>
+                  <option value="E053" {% if 'E053' in selected_pos_map_annot %}selected{% endif %}>E053 (Neurosph) Cortex derived primary cultured neurospheres</option>
+                  <option value="E054" {% if 'E054' in selected_pos_map_annot %}selected{% endif %}>E054 (Neurosph) Ganglion Eminence derived primary cultured neurospheres</option>
+                  <option value="E067" {% if 'E067' in selected_pos_map_annot %}selected{% endif %}>E067 (Brain) Brain Angular Gyrus</option>
+                  <option value="E068" {% if 'E068' in selected_pos_map_annot %}selected{% endif %}>E068 (Brain) Brain Anterior Caudate</option>
+                  <option value="E069" {% if 'E069' in selected_pos_map_annot %}selected{% endif %}>E069 (Brain) Brain Cingulate Gyrus</option>
+                  <option value="E070" {% if 'E070' in selected_pos_map_annot %}selected{% endif %}>E070 (Brain) Brain Germinal Matrix</option>
+                  <option value="E071" {% if 'E071' in selected_pos_map_annot %}selected{% endif %}>E071 (Brain) Brain Hippocampus Middle</option>
+                  <option value="E072" {% if 'E072' in selected_pos_map_annot %}selected{% endif %}>E072 (Brain) Brain Inferior Temporal Lobe</option>
+                  <option value="E073" {% if 'E073' in selected_pos_map_annot %}selected{% endif %}>E073 (Brain) Brain Dorsolateral Prefrontal Cortex</option>
+                  <option value="E074" {% if 'E074' in selected_pos_map_annot %}selected{% endif %}>E074 (Brain) Brain Substantia Nigra</option>
+                  <option value="E081" {% if 'E081' in selected_pos_map_annot %}selected{% endif %}>E081 (Brain) Fetal Brain Male</option>
+                  <option value="E082" {% if 'E082' in selected_pos_map_annot %}selected{% endif %}>E082 (Brain) Fetal Brain Female</option>
+                  <option value="E125" {% if 'E125' in selected_pos_map_annot %}selected{% endif %}>E125 (ENCODE2012) NH-A Astrocytes Primary Cells</option>
+                  <option value="E027" {% if 'E027' in selected_pos_map_annot %}selected{% endif %}>E027 (Epithelial) Breast Myoepithelial Primary Cells</option>
+                  <option value="E028" {% if 'E028' in selected_pos_map_annot %}selected{% endif %}>E028 (Epithelial) Breast variant Human Mammary Epithelial Cells (vHMEC)</option>
+                  <option value="E119" {% if 'E119' in selected_pos_map_annot %}selected{% endif %}>E119 (ENCODE2012) HMEC Mammary Epithelial Primary Cells</option>
+                  <option value="E117" {% if 'E117' in selected_pos_map_annot %}selected{% endif %}>E117 (ENCODE2012) HeLa-S3 Cervical Carcinoma Cell Line</option>
+                  <option value="E001" {% if 'E001' in selected_pos_map_annot %}selected{% endif %}>E001 (ESC) ES-I3 Cells</option>
+                  <option value="E002" {% if 'E002' in selected_pos_map_annot %}selected{% endif %}>E002 (ESC) ES-WA7 Cells</option>
+                  <option value="E003" {% if 'E003' in selected_pos_map_annot %}selected{% endif %}>E003 (ESC) H1 Cells</option>
+                  <option value="E008" {% if 'E008' in selected_pos_map_annot %}selected{% endif %}>E008 (ESC) H9 Cells</option>
+                  <option value="E014" {% if 'E014' in selected_pos_map_annot %}selected{% endif %}>E014 (ESC) HUES48 Cells</option>
+                  <option value="E015" {% if 'E015' in selected_pos_map_annot %}selected{% endif %}>E015 (ESC) HUES6 Cells</option>
+                  <option value="E016" {% if 'E016' in selected_pos_map_annot %}selected{% endif %}>E016 (ESC) HUES64 Cells</option>
+                  <option value="E024" {% if 'E024' in selected_pos_map_annot %}selected{% endif %}>E024 (ESC) ES-UCSF4 Cells</option>
+                  <option value="E004" {% if 'E004' in selected_pos_map_annot %}selected{% endif %}>E004 (ES-deriv) H1 BMP4 Derived Mesendoderm Cultured Cells</option>
+                  <option value="E005" {% if 'E005' in selected_pos_map_annot %}selected{% endif %}>E005 (ES-deriv) H1 BMP4 Derived Trophoblast Cultured Cells</option>
+                  <option value="E006" {% if 'E006' in selected_pos_map_annot %}selected{% endif %}>E006 (ES-deriv) H1 Derived Mesenchymal Stem Cells</option>
+                  <option value="E007" {% if 'E007' in selected_pos_map_annot %}selected{% endif %}>E007 (ES-deriv) H1 Derived Neuronal Progenitor Cultured Cells</option>
+                  <option value="E009" {% if 'E009' in selected_pos_map_annot %}selected{% endif %}>E009 (ES-deriv) H9 Derived Neuronal Progenitor Cultured Cells</option>
+                  <option value="E010" {% if 'E010' in selected_pos_map_annot %}selected{% endif %}>E010 (ES-deriv) H9 Derived Neuron Cultured Cells</option>
+                  <option value="E011" {% if 'E011' in selected_pos_map_annot %}selected{% endif %}>E011 (ES-deriv) hESC Derived CD184+ Endoderm Cultured Cells</option>
+                  <option value="E012" {% if 'E012' in selected_pos_map_annot %}selected{% endif %}>E012 (ES-deriv) hESC Derived CD56+ Ectoderm Cultured Cells</option>
+                  <option value="E013" {% if 'E013' in selected_pos_map_annot %}selected{% endif %}>E013 (ES-deriv) hESC Derived CD56+ Mesoderm Cultured Cells</option>
+                  <option value="E023" {% if 'E023' in selected_pos_map_annot %}selected{% endif %}>E023 (Mesench) Mesenchymal Stem Cell Derived Adipocyte Cultured Cells</option>
+                  <option value="E025" {% if 'E025' in selected_pos_map_annot %}selected{% endif %}>E025 (Mesench) Adipose Derived Mesenchymal Stem Cell Cultured Cells</option>
+                  <option value="E063" {% if 'E063' in selected_pos_map_annot %}selected{% endif %}>E063 (Adipose) Adipose Nuclei</option>
+                  <option value="E075" {% if 'E075' in selected_pos_map_annot %}selected{% endif %}>E075 (Digestive) Colonic Mucosa</option>
+                  <option value="E076" {% if 'E076' in selected_pos_map_annot %}selected{% endif %}>E076 (Sm. Muscle) Colon Smooth Muscle</option>
+                  <option value="E106" {% if 'E106' in selected_pos_map_annot %}selected{% endif %}>E106 (Digestive) Sigmoid Colon</option>
+                  <option value="E077" {% if 'E077' in selected_pos_map_annot %}selected{% endif %}>E077 (Digestive) Duodenum Mucosa</option>
+                  <option value="E078" {% if 'E078' in selected_pos_map_annot %}selected{% endif %}>E078 (Sm. Muscle) Duodenum Smooth Muscle</option>
+                  <option value="E079" {% if 'E079' in selected_pos_map_annot %}selected{% endif %}>E079 (Digestive) Esophagus</option>
+                  <option value="E084" {% if 'E084' in selected_pos_map_annot %}selected{% endif %}>E084 (Digestive) Fetal Intestine Large</option>
+                  <option value="E085" {% if 'E085' in selected_pos_map_annot %}selected{% endif %}>E085 (Digestive) Fetal Intestine Small</option>
+                  <option value="E109" {% if 'E109' in selected_pos_map_annot %}selected{% endif %}>E109 (Digestive) Small Intestine</option>
+                  <option value="E101" {% if 'E101' in selected_pos_map_annot %}selected{% endif %}>E101 (Digestive) Rectal Mucosa Donor 29</option>
+                  <option value="E102" {% if 'E102' in selected_pos_map_annot %}selected{% endif %}>E102 (Digestive) Rectal Mucosa Donor 31</option>
+                  <option value="E103" {% if 'E103' in selected_pos_map_annot %}selected{% endif %}>E103 (Sm. Muscle) Rectal Smooth Muscle</option>
+                  <option value="E092" {% if 'E092' in selected_pos_map_annot %}selected{% endif %}>E092 (Digestive) Fetal Stomach</option>
+                  <option value="E094" {% if 'E094' in selected_pos_map_annot %}selected{% endif %}>E094 (Digestive) Gastric</option>
+                  <option value="E110" {% if 'E110' in selected_pos_map_annot %}selected{% endif %}>E110 (Digestive) Stomach Mucosa</option>
+                  <option value="E111" {% if 'E111' in selected_pos_map_annot %}selected{% endif %}>E111 (Sm. Muscle) Stomach Smooth Muscle</option>
+                  <option value="E083" {% if 'E083' in selected_pos_map_annot %}selected{% endif %}>E083 (Heart) Fetal Heart</option>
+                  <option value="E095" {% if 'E095' in selected_pos_map_annot %}selected{% endif %}>E095 (Heart) Left Ventricle</option>
+                  <option value="E104" {% if 'E104' in selected_pos_map_annot %}selected{% endif %}>E104 (Heart) Right Atrium</option>
+                  <option value="E105" {% if 'E105' in selected_pos_map_annot %}selected{% endif %}>E105 (Heart) Right Ventricle</option>
+                  <option value="E086" {% if 'E086' in selected_pos_map_annot %}selected{% endif %}>E086 (Other) Fetal Kidney</option>
+                  <option value="E066" {% if 'E066' in selected_pos_map_annot %}selected{% endif %}>E066 (Other) Liver</option>
+                  <option value="E118" {% if 'E118' in selected_pos_map_annot %}selected{% endif %}>E118 (ENCODE2012) HepG2 Hepatocellular Carcinoma Cell Line</option>
+                  <option value="E017" {% if 'E017' in selected_pos_map_annot %}selected{% endif %}>E017 (IMR90) IMR90 fetal lung fibroblasts Cell Line</option>
+                  <option value="E088" {% if 'E088' in selected_pos_map_annot %}selected{% endif %}>E088 (Other) Fetal Lung</option>
+                  <option value="E096" {% if 'E096' in selected_pos_map_annot %}selected{% endif %}>E096 (Other) Lung</option>
+                  <option value="E114" {% if 'E114' in selected_pos_map_annot %}selected{% endif %}>E114 (ENCODE2012) A549 EtOH 0.02pct Lung Carcinoma Cell Line</option>
+                  <option value="E128" {% if 'E128' in selected_pos_map_annot %}selected{% endif %}>E128 (ENCODE2012) NHLF Lung Fibroblast Primary Cells</option>
+                  <option value="E052" {% if 'E052' in selected_pos_map_annot %}selected{% endif %}>E052 (Myosat) Muscle Satellite Cultured Cells</option>
+                  <option value="E089" {% if 'E089' in selected_pos_map_annot %}selected{% endif %}>E089 (Muscle) Fetal Muscle Trunk</option>
+                  <option value="E100" {% if 'E100' in selected_pos_map_annot %}selected{% endif %}>E100 (Muscle) Psoas Muscle</option>
+                  <option value="E107" {% if 'E107' in selected_pos_map_annot %}selected{% endif %}>E107 (Muscle) Skeletal Muscle Male</option>
+                  <option value="E108" {% if 'E108' in selected_pos_map_annot %}selected{% endif %}>E108 (Muscle) Skeletal Muscle Female</option>
+                  <option value="E120" {% if 'E120' in selected_pos_map_annot %}selected{% endif %}>E120 (ENCODE2012) HSMM Skeletal Muscle Myoblasts Cells</option>
+                  <option value="E121" {% if 'E121' in selected_pos_map_annot %}selected{% endif %}>E121 (ENCODE2012) HSMM cell derived Skeletal Muscle Myotubes Cells</option>
+                  <option value="E090" {% if 'E090' in selected_pos_map_annot %}selected{% endif %}>E090 (Muscle) Fetal Muscle Leg</option>
+                  <option value="E097" {% if 'E097' in selected_pos_map_annot %}selected{% endif %}>E097 (Other) Ovary</option>
+                  <option value="E087" {% if 'E087' in selected_pos_map_annot %}selected{% endif %}>E087 (Other) Pancreatic Islets</option>
+                  <option value="E098" {% if 'E098' in selected_pos_map_annot %}selected{% endif %}>E098 (Other) Pancreas</option>
+                  <option value="E091" {% if 'E091' in selected_pos_map_annot %}selected{% endif %}>E091 (Other) Placenta</option>
+                  <option value="E099" {% if 'E099' in selected_pos_map_annot %}selected{% endif %}>E099 (Other) Placenta Amnion</option>
+                  <option value="E055" {% if 'E055' in selected_pos_map_annot %}selected{% endif %}>E055 (Epithelial) Foreskin Fibroblast Primary Cells skin01</option>
+                  <option value="E056" {% if 'E056' in selected_pos_map_annot %}selected{% endif %}>E056 (Epithelial) Foreskin Fibroblast Primary Cells skin02</option>
+                  <option value="E057" {% if 'E057' in selected_pos_map_annot %}selected{% endif %}>E057 (Epithelial) Foreskin Keratinocyte Primary Cells skin02</option>
+                  <option value="E058" {% if 'E058' in selected_pos_map_annot %}selected{% endif %}>E058 (Epithelial) Foreskin Keratinocyte Primary Cells skin03</option>
+                  <option value="E059" {% if 'E059' in selected_pos_map_annot %}selected{% endif %}>E059 (Epithelial) Foreskin Melanocyte Primary Cells skin01</option>
+                  <option value="E061" {% if 'E061' in selected_pos_map_annot %}selected{% endif %}>E061 (Epithelial) Foreskin Melanocyte Primary Cells skin03</option>
+                  <option value="E126" {% if 'E126' in selected_pos_map_annot %}selected{% endif %}>E126 (ENCODE2012) NHDF-Ad Adult Dermal Fibroblast Primary Cells</option>
+                  <option value="E127" {% if 'E127' in selected_pos_map_annot %}selected{% endif %}>E127 (ENCODE2012) NHEK-Epidermal Keratinocyte Primary Cells</option>
+                  <option value="E113" {% if 'E113' in selected_pos_map_annot %}selected{% endif %}>E113 (Other) Spleen</option>
+                  <option value="E026" {% if 'E026' in selected_pos_map_annot %}selected{% endif %}>E026 (Mesench) Bone Marrow Derived Cultured Mesenchymal Stem Cells</option>
+                  <option value="E049" {% if 'E049' in selected_pos_map_annot %}selected{% endif %}>E049 (Mesench) Mesenchymal Stem Cell Derived Chondrocyte Cultured Cells</option>
+                  <option class="level1" value="null">Thymus (2)</option>
+                  <option value="E093" {% if 'E093' in selected_pos_map_annot %}selected{% endif %}>E093 (Thymus) Fetal Thymus</option>
+                  <option value="E112" {% if 'E112' in selected_pos_map_annot %}selected{% endif %}>E112 (Thymus) Thymus</option>
+                  <option value="E065" {% if 'E065' in selected_pos_map_annot %}selected{% endif %}>E065 (Heart) Aorta</option>
+                  <option value="E122" {% if 'E122' in selected_pos_map_annot %}selected{% endif %}>E122 (ENCODE2012) HUVEC Umbilical Vein Endothelial Primary Cells</option>
+                  <option value="E018" {% if 'E018' in selected_pos_map_annot %}selected{% endif %}>E018 (iPSC) iPS-15b Cells</option>
+                  <option value="E019" {% if 'E019' in selected_pos_map_annot %}selected{% endif %}>E019 (iPSC) iPS-18 Cells</option>
+                  <option value="E020" {% if 'E020' in selected_pos_map_annot %}selected{% endif %}>E020 (iPSC) iPS-20b Cells</option>
+                  <option value="E021" {% if 'E021' in selected_pos_map_annot %}selected{% endif %}>E021 (iPSC) iPS DF 6.9 Cells</option>
+                  <option value="E022" {% if 'E022' in selected_pos_map_annot %}selected{% endif %}>E022 (iPSC) iPS DF 19.11 Cells</option>
+                </select>
+            </div>
+
+            <div class="field">
+                <label for="posMapChr15Max">15-core chromatin state maximum state</label>
+                <input id="posMapChr15Max" name="posMapChr15Max" value="{{ 'NA' if values['posMapChr15check'] == '0' else ('7' if values['posMapChr15Max'] == 'NA' else values['posMapChr15Max']) }}">
+            </div>
+
+            <div class="field">
+                <label for="ciMapChr15Meth">15-core chromatin state filtering method</label>
+                <select id="ciMapChr15Meth" name="ciMapChr15Meth">
+                  <option value="NA" {% if values['posMapChr15check'] == '0' %}selected{% endif %}>NA</option>
+                  <option value="any" {% if values['posMapChr15check'] == '1' and values['ciMapChr15Meth'] in ['NA', 'any'] %}selected{% endif %}>any</option>
+                  <option value="majority" {% if values['posMapChr15check'] == '1' and values['ciMapChr15Meth'] == 'majority' %}selected{% endif %}>majority</option>
+                  <option value="all" {% if values['posMapChr15check'] == '1' and values['ciMapChr15Meth'] == 'all' %}selected{% endif %}>all</option>
+                </select>
+            </div>
+
+            <h4 style="color:#2563eb">Additional annotations</h4>
+            <div class="field">
+                <label for="Annotation datasets">	Annotation datasets</label>
+                <text>Filtering is performed when at least one annotation is selected.</text>
+                <select id="ciMapAnnoDs" name="ciMapAnnoDs" multiple size="7">
+                  {% set selected_pos_map_annot = values.get('ciMapAnnoDs', '').split(':') if values.get('ciMapAnnoDs') else [] %}
+                  <option value="PsychENCODE/enhancer.bed.gz" {% if 'PsychENCODE/enhancer.bed.gz' in selected_pos_map_annot %}selected{% endif %}>Enhancers</option>
+                  <option value="PsychENCODE/enhancer_high_conf.bed.gz" {% if 'PsychENCODE/enhancer_high_conf.bed.gz' in selected_pos_map_annot %}selected{% endif %}>High confidence enhancers</option>
+                  <option value="PsychENCODE/PFC_H3K27ac_peak.bed.gz" {% if 'PsychENCODE/PFC_H3K27ac_peak.bed.gz' in selected_pos_map_annot %}selected{% endif %}>Prefrontal Cortex (PFC) H3K27ac</option>
+                  <option value="PsychENCODE/TC_H3K27ac_peak.bed.gz" {% if 'PsychENCODE/TC_H3K27ac_peak.bed.gz' in selected_pos_map_annot %}selected{% endif %}>Temporal Cortex (TC) H3K27ac</option>
+                  <option value="PsychENCODE/CBC_H3K27ac_peak.bed.gz" {% if 'PsychENCODE/CBC_H3K27ac_peak.bed.gz' in selected_pos_map_annot %}selected{% endif %}>Cerebellar Cortex (CBC) H3K27ac</option>
+                  <option value="PsychENCODE/TARs.bed.gz" {% if 'PsychENCODE/TARs.bed.gz' in selected_pos_map_annot %}selected{% endif %}>Transcriptionally Active Regions (TARs)</option>
+                  <option value="FANTOM5/TSS.bed.gz" {% if 'FANTOM5/TSS.bed.gz' in selected_pos_map_annot %}selected{% endif %}>Transcription start sites</option>
+                  <option value="FANTOM5/permissive_CAGE_peak.bed.gz" {% if 'FANTOM5/permissive_CAGE_peak.bed.gz' in selected_pos_map_annot %}selected{% endif %}>Permissive CAGE perks</option>
+                  <option value="FANTOM5/robust_CAGE_peak.bed.gz" {% if 'FANTOM5/robust_CAGE_peak.bed.gz' in selected_pos_map_annot %}selected{% endif %}>Robust CAGE perks</option>
+                  <option value="FANTOM5/permissive_enhancer.bed.gz" {% if 'FANTOM5/permissive_enhancer.bed.gz' in selected_pos_map_annot %}selected{% endif %}>Permissive enhancers</option>
+                  <option value="FANTOM5/robust_enhancer.bed.gz" {% if 'FANTOM5/robust_enhancer.bed.gz' in selected_pos_map_annot %}selected{% endif %}>Robust enhancers</option>
+                  <option value="BOCA/DLPFC_neuron.bed.gz" {% if 'BOCA/DLPFC_neuron.bed.gz' in selected_pos_map_annot %}selected{% endif %}>Neuron from Dorsolateral prefrontal cortex (DLPFC)</option>
+                  <option value="BOCA/DLPFC_glia.bed.gz" {% if 'BOCA/DLPFC_glia.bed.gz' in selected_pos_map_annot %}selected{% endif %}>Glia from Dorsolateral prefrontal cortex (DLPFC)</option>
+                  <option value="BOCA/OFC_neuron.bed.gz" {% if 'BOCA/OFC_neuron.bed.gz' in selected_pos_map_annot %}selected{% endif %}>Neuron from Orbitofrontal cortex (OFC)</option>
+                  <option value="BOCA/OFC_glia.bed.gz" {% if 'BOCA/OFC_glia.bed.gz' in selected_pos_map_annot %}selected{% endif %}>Glia from Orbitofrontal cortex (OFC)</option>
+                  <option value="BOCA/VLPFC_neuron.bed.gz" {% if 'BOCA/VLPFC_neuron.bed.gz' in selected_pos_map_annot %}selected{% endif %}>Neuron from Ventrolatelar prefrontal cortex (VLPFC)</option>
+                  <option value="BOCA/VLPFC_glia.bed.gz" {% if 'BOCA/VLPFC_glia.bed.gz' in selected_pos_map_annot %}selected{% endif %}>Glia from Ventrolatelar prefrontal cortex (VLPFC)</option>
+                  <option value="BOCA/ACC_neuron.bed.gz" {% if 'BOCA/ACC_neuron.bed.gz' in selected_pos_map_annot %}selected{% endif %}>Neuron from Anterior cingulate cortex (ACC)</option>
+                  <option value="BOCA/ACC_glia.bed.gz" {% if 'BOCA/ACC_glia.bed.gz' in selected_pos_map_annot %}selected{% endif %}>Glia from Anterior cingulate cortex (ACC)</option>
+                  <option value="BOCA/STC_neuron.bed.gz" {% if 'BOCA/STC_neuron.bed.gz' in selected_pos_map_annot %}selected{% endif %}>Neuron from Superior temporal cortex (STC)</option>
+                  <option value="BOCA/STC_glia.bed.gz" {% if 'BOCA/STC_glia.bed.gz' in selected_pos_map_annot %}selected{% endif %}>Glia from Superior temporal cortex (STC)</option>
+                  <option value="BOCA/ITC_neuron.bed.gz" {% if 'BOCA/ITC_neuron.bed.gz' in selected_pos_map_annot %}selected{% endif %}>Neuron from Inferior temporal cortex (ITC)</option>
+                  <option value="BOCA/ITC_glia.bed.gz" {% if 'BOCA/ITC_glia.bed.gz' in selected_pos_map_annot %}selected{% endif %}>Glia from Inferior temporal cortex (ITC)</option>
+                  <option value="BOCA/PMC_neuron.bed.gz" {% if 'BOCA/PMC_neuron.bed.gz' in selected_pos_map_annot %}selected{% endif %}>Neuron from Primary motor cortex (PMC)</option>
+                  <option value="BOCA/PMC_glia.bed.gz" {% if 'BOCA/PMC_glia.bed.gz' in selected_pos_map_annot %}selected{% endif %}>Glia from Primary motor cortex (PMC)</option>
+                  <option value="BOCA/INS_neuron.bed.gz" {% if 'BOCA/INS_neuron.bed.gz' in selected_pos_map_annot %}selected{% endif %}>Neuron from Insula (INS)</option>
+                  <option value="BOCA/INS_glia.bed.gz" {% if 'BOCA/INS_glia.bed.gz' in selected_pos_map_annot %}selected{% endif %}>Glia from Insula (INS)</option>
+                  <option value="BOCA/PVC_neuron.bed.gz" {% if 'BOCA/PVC_neuron.bed.gz' in selected_pos_map_annot %}selected{% endif %}>Neuron from Primary visual cortex (PVC)</option>
+                  <option value="BOCA/PVC_glia.bed.gz" {% if 'BOCA/PVC_glia.bed.gz' in selected_pos_map_annot %}selected{% endif %}>Glia from Primary visual cortex (PVC)</option>
+                  <option value="BOCA/AMY_neuron.bed.gz" {% if 'BOCA/AMY_neuron.bed.gz' in selected_pos_map_annot %}selected{% endif %}>Neuron from Amygdala (AMY)</option>
+                  <option value="BOCA/AMY_glia.bed.gz" {% if 'BOCA/AMY_glia.bed.gz' in selected_pos_map_annot %}selected{% endif %}>Glia from Amygdala (AMY)</option>
+                  <option value="BOCA/HIPP_neuron.bed.gz" {% if 'BOCA/HIPP_neuron.bed.gz' in selected_pos_map_annot %}selected{% endif %}>Neuron from Hippocampus (HIPP)</option>
+                  <option value="BOCA/HIPP_glia.bed.gz" {% if 'BOCA/HIPP_glia.bed.gz' in selected_pos_map_annot %}selected{% endif %}>Glia from Hippocampus (HIPP)</option>
+                  <option value="BOCA/MDT_neuron.bed.gz" {% if 'BOCA/MDT_neuron.bed.gz' in selected_pos_map_annot %}selected{% endif %}>Neuron from Mediodorsal thalamus (MDT)</option>
+                  <option value="BOCA/MDT_glia.bed.gz" {% if 'BOCA/MDT_glia.bed.gz' in selected_pos_map_annot %}selected{% endif %}>Glia from Mediodorsal thalamus (MDT)</option>
+                  <option value="BOCA/NAC_neuron.bed.gz" {% if 'BOCA/NAC_neuron.bed.gz' in selected_pos_map_annot %}selected{% endif %}>Neuron from Nucleus accumbens (NAC)</option>
+                  <option value="BOCA/NAC_glia.bed.gz" {% if 'BOCA/NAC_glia.bed.gz' in selected_pos_map_annot %}selected{% endif %}>Glia from Nucleus accumbens (NAC)</option>
+                  <option value="BOCA/PUT_neuron.bed.gz" {% if 'BOCA/PUT_neuron.bed.gz' in selected_pos_map_annot %}selected{% endif %}>Neuron from Putamen (PUT)</option>
+                  <option value="BOCA/PUT_glia.bed.gz" {% if 'BOCA/PUT_glia.bed.gz' in selected_pos_map_annot %}selected{% endif %}>Glia from Putamen (PUT)</option>
+                  </select>
+            </div>
+            <div class="field">
+              <label for="posMapAnnoMeth">Annotation filtering method</label>
+              <select id="posMapAnnoMeth" name="posMapAnnoMeth">
+                <option value="NA" {% if values['posMapAnnoMeth'] == 'NA' %}selected{% endif %}>No filtering (only annotate SNPs)</option>
+                <option value="any" {% if values['posMapAnnoMeth'] == 'any' %}selected{% endif %}>any</option>
+                <option value="majority" {% if values['posMapAnnoMeth'] == 'majority' %}selected{% endif %}>majority</option>
+                <option value="all" {% if values['posMapAnnoMeth'] == 'all' %}selected{% endif %}>all</option>
+              </select>
+            </div>
+
+
         </div>
 
         <div class="panel">
@@ -352,7 +613,14 @@
             posMapAnnot: [],
             magma: '0',
             magma_window: '0',
-            magma_exp: 'GTEx/v8/gtex_v8_ts_avg_log2TPM:GTEx/v8/gtex_v8_ts_general_avg_log2TPM'
+            magma_exp: 'GTEx/v8/gtex_v8_ts_avg_log2TPM:GTEx/v8/gtex_v8_ts_general_avg_log2TPM',
+            posMapCADDcheck: '0',
+            posMapCADDth: '0',
+            posMapRDBcheck: '0',
+            posMapRDBth: 'NA',
+            posMapChr15check: '0',
+            posMapChr15Max: 'NA',
+            ciMapChr15Meth: 'NA'
           };
 
           Object.entries(defaults).forEach(([key, value]) => {
@@ -391,6 +659,42 @@
         document.addEventListener('DOMContentLoaded', function() {
           const nField = document.getElementById('N');
           const ncolField = document.getElementById('Ncol');
+          const posMapCADDcheck = document.getElementById('posMapCADDcheck');
+          const posMapCADDth = document.getElementById('posMapCADDth');
+          const posMapRDBcheck = document.getElementById('posMapRDBcheck');
+          const posMapRDBth = document.getElementById('posMapRDBth');
+          const posMapChr15check = document.getElementById('posMapChr15check');
+          const posMapChr15Max = document.getElementById('posMapChr15Max');
+          const ciMapChr15Meth = document.getElementById('ciMapChr15Meth');
+
+          posMapCADDcheck.addEventListener('change', function() {
+            if (posMapCADDcheck.value === '0') {
+              posMapCADDth.value = '0';
+            } else if (posMapCADDth.value === '0') {
+              posMapCADDth.value = '12.37';
+            }
+          });
+
+          posMapRDBcheck.addEventListener('change', function() {
+            if (posMapRDBcheck.value === '0') {
+              posMapRDBth.value = 'NA';
+            } else if (posMapRDBth.value === 'NA') {
+              posMapRDBth.value = '7';
+            }
+          });
+
+          posMapChr15check.addEventListener('change', function() {
+            if (posMapChr15check.value === '0') {
+              posMapChr15Max.value = 'NA';
+              ciMapChr15Meth.value = 'NA';
+            } else if (posMapChr15Max.value === 'NA') {
+              posMapChr15Max.value = '7';
+              ciMapChr15Meth.value = 'any';
+            } else if (ciMapChr15Meth.value === 'NA') {
+              ciMapChr15Meth.value = 'any';
+            }
+          });
+
           [nField, ncolField].forEach((field) => {
             field.addEventListener('input', validateNFields);
             field.addEventListener('change', validateNFields);

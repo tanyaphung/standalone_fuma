@@ -40,8 +40,11 @@ DEFAULTS = {
     "posMap": "1",
     "posMapWindowSize": "NA",
     "posMapAnnot": "NA",
+    "posMapCADDcheck": "0",
     "posMapCADDth": "0",
+    "posMapRDBcheck": "0",
     "posMapRDBth": "NA",
+    "posMapChr15check": "0",
     "posMapChr15": "NA",
     "posMapChr15Max": "NA",
     "posMapChr15Meth": "NA",
@@ -104,6 +107,21 @@ def build_params_config(form_data: dict | None = None) -> str:
                     data[key] = normalize_multiselect(value, data[key])
                 else:
                     data[key] = normalize_value(value, data[key])
+
+    if data["posMapCADDcheck"] == "0":
+        data["posMapCADDth"] = "0"
+    if data["posMapRDBcheck"] == "0":
+        data["posMapRDBth"] = "NA"
+    elif data["posMapRDBth"] == "NA":
+        data["posMapRDBth"] = "7"
+    if data["posMapChr15check"] == "0":
+        data["posMapChr15Max"] = "NA"
+    elif data["posMapChr15Max"] == "NA":
+        data["posMapChr15Max"] = "7"
+    if data["posMapChr15check"] == "0":
+        data["ciMapChr15Meth"] = "NA"
+    elif data["ciMapChr15Meth"] == "NA":
+        data["ciMapChr15Meth"] = "any"
 
     if data["snp2genegrch38"] not in {"0", "1"}:
         raise ValueError("snp2genegrch38 must be either 0 or 1")
