@@ -1,0 +1,76 @@
+services:
+  web:
+    build: .
+    ports:
+      - "${APP_PORT}:5000"
+    environment:
+      - REDIS_HOST=${REDIS_HOST}
+      - REDIS_PORT=${REDIS_PORT}
+
+  redis:
+    image: redis:alpine
+
+  gwas_file_cli:
+    container_name: gwas_file_cli
+    build:
+      dockerfile: gwas_file/Dockerfile-gwas_file_cli
+
+  allsnps_cli:
+    container_name: allsnps_cli
+    build:
+      dockerfile: allsnps/Dockerfile-allsnps_cli
+
+  magma_cli:
+    container_name: magma_cli
+    build:
+      dockerfile: magma/Dockerfile-magma_cli
+
+  manhattan_filt_cli:
+    container_name: manhattan_filt_cli
+    build:
+      dockerfile: manhattan_filt/Dockerfile-manhattan_filt_cli
+
+  qqsnps_filt_cli:
+    container_name: qqsnps_filt_cli
+    build:
+      dockerfile: qqsnps_filt/Dockerfile-qqsnps_filt_cli
+  
+  getld_cli:
+    container_name: getld_cli
+    build:
+      dockerfile: getld/Dockerfile-getld_cli
+
+  snpannot_cli:
+    container_name: snpannot_cli
+    build:
+      dockerfile: snpannot/Dockerfile-snpannot_cli
+
+  getgwascatalog_cli:
+    container_name: getgwascatalog_cli
+    build:
+      dockerfile: get_gwas_catalog/Dockerfile-get_gwas_catalog_cli
+
+  geteqtl_cli:
+    container_name: geteqtl_cli
+    build:
+      dockerfile: geteqtl/Dockerfile-geteqtl_cli
+
+  qtls_map_cli:
+    container_name: qtls_map_cli
+    build:
+      dockerfile: qtls_map/Dockerfile-qtls_map_cli
+
+  getci_cli:
+    container_name: getci_cli
+    build:
+      dockerfile: getci/Dockerfile-getci_cli
+
+  genemap_cli:
+    container_name: genemap_cli
+    build:
+      dockerfile: genemap/Dockerfile-genemap_cli
+
+  create_circos_plot_cli:
+    container_name: create_circos_plot_cli
+    build:
+      dockerfile: create_circos_plot/Dockerfile-create_circos_plot_cli

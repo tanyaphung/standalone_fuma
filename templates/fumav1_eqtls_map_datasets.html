@@ -1,0 +1,397 @@
+<select id="eqtlMapdss" name="eqtlMapdss" multiple size="25">
+    <option value="TIGER/Nom_Alonso_Pancreatic_islets.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'TIGER/Nom_Alonso_Pancreatic_islets.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>TIGER Alonso et al. 2021 Pancreatic islets</option>
+
+    <option value="InsPIRE/Nom_InsPIRE_Islets_Gene_eQTLs_Nominal_Pvalues.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'InsPIRE/Nom_InsPIRE_Islets_Gene_eQTLs_Nominal_Pvalues.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>InsPIRE Viñuela et al. 2020 Pancreatic islets </option>
+
+    <option value="EyeGEx/EyeGEx.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'EyeGEx/EyeGEx.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>EyeGEx</option>
+
+    <option value="eQTLcatalogue/Alasoo_2018_ge_macrophage_IFNg_Salmonella.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'eQTLcatalogue/Alasoo_2018_ge_macrophage_IFNg_Salmonella.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>eQTLcatalogue Alasoo 2018 macrophage IFNg Salmonella</option>
+
+    <option value="eQTLcatalogue/Alasoo_2018_ge_macrophage_IFNg.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'eQTLcatalogue/Alasoo_2018_ge_macrophage_IFNg.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>eQTLcatalogue Alasoo 2018 macrophage IFNg</option>
+
+    <option value="eQTLcatalogue/Alasoo_2018_ge_macrophage_naive.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'eQTLcatalogue/Alasoo_2018_ge_macrophage_naive.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>eQTLcatalogue Alasoo 2018 macrophage naive</option>
+
+    <option value="eQTLcatalogue/Alasoo_2018_ge_macrophage_Salmonella.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'eQTLcatalogue/Alasoo_2018_ge_macrophage_Salmonella.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>eQTLcatalogue Alasoo 2018 macrophage Salmonella</option>
+
+    <option value="eQTLcatalogue/BLUEPRINT_ge_monocyte.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'eQTLcatalogue/BLUEPRINT_ge_monocyte.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>eQTLcatalogue BLUEPRINT monocyte</option>
+
+    <option value="eQTLcatalogue/BLUEPRINT_ge_neutrophil.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'eQTLcatalogue/BLUEPRINT_ge_neutrophil.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>eQTLcatalogue BLUEPRINT neutrophil</option>
+
+    <option value="eQTLcatalogue/BLUEPRINT_ge_T-cell.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'eQTLcatalogue/BLUEPRINT_ge_T-cell.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>eQTLcatalogue BLUEPRINT T-cell</option>
+
+    <option value="eQTLcatalogue/BrainSeq_ge_brain.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'eQTLcatalogue/BrainSeq_ge_brain.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>eQTLcatalogue BrainSeq brain</option>
+
+    <option value="eQTLcatalogue/CEDAR_B-cell_CD19.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'eQTLcatalogue/CEDAR_B-cell_CD19.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>eQTLcatalogue CEDAR B-cell CD19</option>
+
+    <option value="eQTLcatalogue/CEDAR_ileum.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'eQTLcatalogue/CEDAR_ileum.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>eQTLcatalogue CEDAR ileum</option>
+
+    <option value="eQTLcatalogue/CEDAR_monocyte_CD14.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'eQTLcatalogue/CEDAR_monocyte_CD14.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>eQTLcatalogue CEDAR monocyte CD14</option>
+
+    <option value="eQTLcatalogue/CEDAR_neutrophil_CD15.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'eQTLcatalogue/CEDAR_neutrophil_CD15.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>eQTLcatalogue CEDAR neutrophil CD15</option>
+
+    <option value="eQTLcatalogue/CEDAR_platelet.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'eQTLcatalogue/CEDAR_platelet.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>eQTLcatalogue CEDAR platelet</option>
+
+    <option value="eQTLcatalogue/CEDAR_rectum.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'eQTLcatalogue/CEDAR_rectum.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>eQTLcatalogue CEDAR rectum</option>
+
+    <option value="eQTLcatalogue/CEDAR_T-cell_CD4.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'eQTLcatalogue/CEDAR_T-cell_CD4.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>eQTLcatalogue CEDAR T-cell CD4</option>
+
+    <option value="eQTLcatalogue/CEDAR_T-cell_CD8.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'eQTLcatalogue/CEDAR_T-cell_CD8.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>eQTLcatalogue CEDAR T-cell CD8</option>
+
+    <option value="eQTLcatalogue/CEDAR_transverse_colon.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'eQTLcatalogue/CEDAR_transverse_colon.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>eQTLcatalogue CEDAR transverse colon</option>
+
+    <option value="eQTLcatalogue/Fairfax_2012_B-cell_CD19.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'eQTLcatalogue/Fairfax_2012_B-cell_CD19.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>eQTLcatalogue Fairfax 2012 B-cell CD19</option>
+
+    <option value="eQTLcatalogue/Fairfax_2014_IFN24.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'eQTLcatalogue/Fairfax_2014_IFN24.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>eQTLcatalogue Fairfax 2014 IFN24</option>
+
+    <option value="eQTLcatalogue/Fairfax_2014_LPS24.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'eQTLcatalogue/Fairfax_2014_LPS24.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>eQTLcatalogue Fairfax 2014 LPS24</option>
+
+    <option value="eQTLcatalogue/Fairfax_2014_LPS2.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'eQTLcatalogue/Fairfax_2014_LPS2.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>eQTLcatalogue Fairfax 2014 LPS2</option>
+
+    <option value="eQTLcatalogue/Fairfax_2014_naive.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'eQTLcatalogue/Fairfax_2014_naive.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>eQTLcatalogue Fairfax 2014 naive</option>
+
+    <option value="eQTLcatalogue/GENCORD_ge_fibroblast.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'eQTLcatalogue/GENCORD_ge_fibroblast.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>eQTLcatalogue GENCORD fibroblast</option>
+
+    <option value="eQTLcatalogue/GENCORD_ge_LCL.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'eQTLcatalogue/GENCORD_ge_LCL.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>eQTLcatalogue GENCORD LCL</option>
+
+    <option value="eQTLcatalogue/GENCORD_ge_T-cell.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'eQTLcatalogue/GENCORD_ge_T-cell.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>eQTLcatalogue GENCORD T-cell</option>
+
+    <option value="eQTLcatalogue/GEUVADIS_ge_LCL.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'eQTLcatalogue/GEUVADIS_ge_LCL.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>eQTLcatalogue GEUVADIS LCL</option>
+
+    <option value="eQTLcatalogue/HipSci_ge_iPSC.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'eQTLcatalogue/HipSci_ge_iPSC.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>eQTLcatalogue HipSci iPSC</option>
+
+    <option value="eQTLcatalogue/Kasela_2017_T-cell_CD4.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'eQTLcatalogue/Kasela_2017_T-cell_CD4.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>eQTLcatalogue Kasela 2017 T-cell CD4</option>
+
+    <option value="eQTLcatalogue/Kasela_2017_T-cell_CD8.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'eQTLcatalogue/Kasela_2017_T-cell_CD8.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>eQTLcatalogue Kasela 2017 T-cell CD8</option>
+
+    <option value="eQTLcatalogue/Lepik_2017_ge_blood.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'eQTLcatalogue/Lepik_2017_ge_blood.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>eQTLcatalogue Lepik 2017 blood</option>
+
+    <option value="eQTLcatalogue/Naranbhai_2015_neutrophil_CD16.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'eQTLcatalogue/Naranbhai_2015_neutrophil_CD16.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>eQTLcatalogue Naranbhai 2015 neutrophil CD16</option>
+
+    <option value="eQTLcatalogue/Nedelec_2016_ge_macrophage_Listeria.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'eQTLcatalogue/Nedelec_2016_ge_macrophage_Listeria.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>eQTLcatalogue Nedelec 2016 macrophage Listeria</option>
+
+    <option value="eQTLcatalogue/Nedelec_2016_ge_macrophage_naive.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'eQTLcatalogue/Nedelec_2016_ge_macrophage_naive.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>eQTLcatalogue Nedelec 2016 macrophage naive</option>
+
+    <option value="eQTLcatalogue/Nedelec_2016_ge_macrophage_Salmonella.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'eQTLcatalogue/Nedelec_2016_ge_macrophage_Salmonella.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>eQTLcatalogue Nedelec 2016 macrophage Salmonella</option>
+
+    <option value="eQTLcatalogue/Quach_2016_ge_monocyte_IAV.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'eQTLcatalogue/Quach_2016_ge_monocyte_IAV.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>eQTLcatalogue Quach 2016 monocyte IAV</option>
+
+    <option value="eQTLcatalogue/Quach_2016_ge_monocyte_LPS.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'eQTLcatalogue/Quach_2016_ge_monocyte_LPS.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>eQTLcatalogue Quach 2016 monocyte LPS</option>
+
+    <option value="eQTLcatalogue/Quach_2016_ge_monocyte_naive.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'eQTLcatalogue/Quach_2016_ge_monocyte_naive.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>eQTLcatalogue Quach 2016 monocyte naive</option>
+
+    <option value="eQTLcatalogue/Quach_2016_ge_monocyte_Pam3CSK4.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'eQTLcatalogue/Quach_2016_ge_monocyte_Pam3CSK4.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>eQTLcatalogue Quach 2016 monocyte Pam3CSK4</option>
+
+    <option value="eQTLcatalogue/Quach_2016_ge_monocyte_R848.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'eQTLcatalogue/Quach_2016_ge_monocyte_R848.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>eQTLcatalogue Quach 2016 monocyte R848</option>
+
+    <option value="eQTLcatalogue/Schwartzentruber_2018_ge_sensory_neuron.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'eQTLcatalogue/Schwartzentruber_2018_ge_sensory_neuron.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>eQTLcatalogue Schwartzentruber 2018 sensory neuron</option>
+
+    <option value="eQTLcatalogue/TwinsUK_ge_blood.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'eQTLcatalogue/TwinsUK_ge_blood.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>eQTLcatalogue TwinsUK blood</option>
+
+    <option value="eQTLcatalogue/TwinsUK_ge_fat.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'eQTLcatalogue/TwinsUK_ge_fat.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>eQTLcatalogue TwinsUK fat</option>
+
+    <option value="eQTLcatalogue/TwinsUK_ge_LCL.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'eQTLcatalogue/TwinsUK_ge_LCL.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>eQTLcatalogue TwinsUK LCL</option>
+
+    <option value="eQTLcatalogue/TwinsUK_ge_skin.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'eQTLcatalogue/TwinsUK_ge_skin.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>eQTLcatalogue TwinsUK skin</option>
+
+    <option value="eQTLcatalogue/van_de_Bunt_2015_ge_pancreatic_islet.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'eQTLcatalogue/van_de_Bunt_2015_ge_pancreatic_islet.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>eQTLcatalogue van de Bunt 2015 pancreatic islet</option>
+
+    <option value="PsychENCODE/PsychENCODE_eQTLs.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'PsychENCODE/PsychENCODE_eQTLs.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>eQTLcatalogue PsychENCODE eQTLs</option>
+
+    <option value="scRNA_eQTLs/B_cell.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'scRNA_eQTLs/B_cell.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>scRNA_eQTLs B cells</option>
+
+    <option value="scRNA_eQTLs/DC.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'scRNA_eQTLs/DC.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>scRNA_eQTLs Dendritic cells</option>
+
+    <option value="scRNA_eQTLs/NK.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'scRNA_eQTLs/NK.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>scRNA_eQTLs Natural Killer cells</option>
+
+    <option value="scRNA_eQTLs/Monocyte.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'scRNA_eQTLs/Monocyte.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>scRNA_eQTLs Monocytes</option>
+
+    <option value="scRNA_eQTLs/Classical_Monocyte.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'scRNA_eQTLs/Classical_Monocyte.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>scRNA_eQTLs Classical Monocyte</option>
+
+    <option value="scRNA_eQTLs/Non_classical_Monocyte.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'scRNA_eQTLs/Non_classical_Monocyte.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>scRNA_eQTLs Non-classical Monocytes</option>
+
+    <option value="scRNA_eQTLs/T_CD4.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'scRNA_eQTLs/T_CD4.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>scRNA_eQTLs CD4 T cells</option>
+
+    <option value="scRNA_eQTLs/T_CD8.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'scRNA_eQTLs/T_CD8.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>scRNA_eQTLs CD8 T cells</option>
+
+    <option value="scRNA_eQTLs/PBMC.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'scRNA_eQTLs/PBMC.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>scRNA_eQTLs PBMC</option>
+
+    <option value="DICE/B_cell_naive.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'DICE/B_cell_naive.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>DICE Naive B cells</option>
+
+    <option value="DICE/T_CD4_naive.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'DICE/T_CD4_naive.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>DICE Naive CD4 T cells</option>
+
+    <option value="DICE/T_CD4_naive_activated.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'DICE/T_CD4_naive_activated.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>DICE Naive (activated) CD4 T cells</option>
+
+    <option value="DICE/T_CD8_naive.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'DICE/T_CD8_naive.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>DICE Naive CD8 T cells</option>
+
+    <option value="DICE/T_CD8_naive_activated.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'DICE/T_CD8_naive_activated.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>DICE Naive (activated) CD8 T cells</option>
+
+    <option value="DICE/Monocyte_classical.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'DICE/Monocyte_classical.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>DICE Classical Monocytes</option>
+
+    <option value="DICE/Monocyte_non_classical.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'DICE/Monocyte_non_classical.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>DICE Non-classical Monocytes</option>
+
+    <option value="DICE/NK.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'DICE/NK.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>DICE Natural Killer cells</option>
+
+    <option value="DICE/T_CD4_TFH.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'DICE/T_CD4_TFH.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>DICE TFH CD4 T cells</option>
+
+    <option value="DICE/T_CD4_TH1.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'DICE/T_CD4_TH1.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>DICE TH1 CD4 T cells</option>
+
+    <option value="DICE/T_CD4_TH17.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'DICE/T_CD4_TH17.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>DICE TH17 CD4 T cells</option>
+
+    <option value="DICE/T_CD4_TH1_17.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'DICE/T_CD4_TH1_17.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>DICE TH1-17 CD4 T cells</option>
+
+    <option value="DICE/T_CD4_TH2.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'DICE/T_CD4_TH2.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>DICE TH2 CD4 T cells</option>
+
+    <option value="DICE/T_CD4_memory_TREG.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'DICE/T_CD4_memory_TREG.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>DICE Memory TREG CD4 T cells</option>
+
+    <option value="DICE/T_CD4_naive_TREG.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'DICE/T_CD4_naive_TREG.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>DICE Naive TREG CD4 T cells</option>
+
+    <option value="eQTLGen/eQTLGen_cis_eQTLs.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'eQTLGen/eQTLGen_cis_eQTLs.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>eQTLGen cis-eQTLs</option>
+
+    <option value="eQTLGen/eQTLGen_trans_eQTLs.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'eQTLGen/eQTLGen_trans_eQTLs.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>eQTLGen trans-eQTLs</option>
+
+    <option value="BloodeQTL/BloodeQTL.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'BloodeQTL/BloodeQTL.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>BloodeQTL/Westra et al. (2013) Blood eQTL Browser</option>
+
+    <option value="BIOSQTL/BIOS_eQTL_geneLevel.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'BIOSQTL/BIOS_eQTL_geneLevel.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>BIOSQTL Zhernakova et al. (2017) BIOS QTL Browser</option>
+
+    <option value="MuTHER/MuTHER_Adipose.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'MuTHER/MuTHER_Adipose.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>MuTHER Adipose</option>
+
+    <option value="MuTHER/MuTHER_LCL.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'MuTHER/MuTHER_LCL.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>MuTHER LCL</option>
+
+    <option value="MuTHER/MuTHER_Skin.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'MuTHER/MuTHER_Skin.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>MuTHER Skin</option>
+
+    <option value="xQTLServer/xQTLServer_eQTLs.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'xQTLServer/xQTLServer_eQTLs.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>xQTLServer cis eQTLs</option>
+
+    <option value="CMC/CMC_SVA_cis.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'CMC/CMC_SVA_cis.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>CMC with SVA cis eQTLs</option>
+
+    <option value="CMC/CMC_SVA_trans.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'CMC/CMC_SVA_trans.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>CMC with SVA trans eQTLs</option>
+
+    <option value="CMC/CMC_NoSVA_cis.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'CMC/CMC_NoSVA_cis.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>CMC without SVA cis eQTLs</option>
+
+    <option value="CMC/CMC_NoSVA_trans.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'CMC/CMC_NoSVA_trans.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>CMC without SVA trans eQTLs</option>
+
+    <option value="BRAINEAC/CRBL.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'BRAINEAC/CRBL.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>BRAINEAC Cerebellar cortex</option>
+
+    <option value="BRAINEAC/FCTX.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'BRAINEAC/FCTX.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>BRAINEAC Frontal cortex</option>
+
+    <option value="BRAINEAC/HIPP.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'BRAINEAC/HIPP.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>BRAINEAC Hippocampus</option>
+
+    <option value="BRAINEAC/MEDU.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'BRAINEAC/MEDU.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>BRAINEAC Inferior olivary nucleus (sub-dissected from the medulla)</option>
+    <option value="BRAINEAC/OCTX.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'BRAINEAC/OCTX.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>BRAINEAC Occipital cortex</option>
+
+    <option value="BRAINEAC/PUTM.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'BRAINEAC/PUTM.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>BRAINEAC Putamen (at the level of the anterior commissure)</option>
+
+    <option value="BRAINEAC/SNIG.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'BRAINEAC/SNIG.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>BRAINEAC Substantia nigra</option>
+
+    <option value="BRAINEAC/TCTX.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'BRAINEAC/TCTX.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>BRAINEAC Temporal cortex</option>
+
+    <option value="BRAINEAC/THAL.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'BRAINEAC/THAL.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>BRAINEAC Thalamus (at the level of the lateral geniculate nucleus)</option>
+
+    <option value="BRAINEAC/WHMT.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'BRAINEAC/WHMT.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>BRAINEAC Intralobular white matter</option>
+
+    <option value="BRAINEAC/aveALL.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'BRAINEAC/aveALL.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>BRAINEAC Averaged expression of 10 brain regions</option>
+
+    <option value="GTEx_v8/Adipose_Subcutaneous.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'GTEx_v8/Adipose_Subcutaneous.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>GTEx v8 Adipose Subcutaneous</option>
+
+    <option value="GTEx_v8/Adipose_Visceral_Omentum.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'GTEx_v8/Adipose_Visceral_Omentum.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>GTEx v8 Adipose Visceral Omentum</option>
+
+    <option value="GTEx_v8/Adrenal_Gland.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'GTEx_v8/Adrenal_Gland.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>GTEx v8 Adrenal Gland</option>
+
+    <option value="GTEx_v8/Cells_EBV-transformed_lymphocytes.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'GTEx_v8/Cells_EBV-transformed_lymphocytes.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>GTEx v8 Cells EBV-transformed lymphocytes</option>
+
+    <option value="GTEx_v8/Whole_Blood.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'GTEx_v8/Whole_Blood.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>GTEx Whole Blood</option>
+
+    <option value="GTEx_v8/Artery_Aorta.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'GTEx_v8/Artery_Aorta.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>GTEx v8 Artery Aorta</option>
+
+    <option value="GTEx_v8/Artery_Coronary.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'GTEx_v8/Artery_Coronary.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>GTEx v8 Artery Coronary</option>
+
+    <option value="GTEx_v8/Artery_Tibial.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'GTEx_v8/Artery_Tibial.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>GTEx v8 Artery Tibial</option>
+
+    <option value="GTEx_v8/Brain_Amygdala.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'GTEx_v8/Brain_Amygdala.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>GTEx v8 Brain Amygdala</option>
+
+    <option value="GTEx_v8/Brain_Anterior_cingulate_cortex_BA24.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'GTEx_v8/Brain_Anterior_cingulate_cortex_BA24.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>GTEx v8 Brain Anterior cingulate cortex BA24</option>
+
+    <option value="GTEx_v8/Brain_Caudate_basal_ganglia.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'GTEx_v8/Brain_Caudate_basal_ganglia.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>GTEx v8 Brain Caudate basal ganglia</option>
+
+    <option value="GTEx_v8/Brain_Cerebellar_Hemisphere.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'GTEx_v8/Brain_Cerebellar_Hemisphere.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>GTEx v8 Brain Cerebellar Hemisphere</option>
+
+    <option value="GTEx_v8/Brain_Cerebellum.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'GTEx_v8/Brain_Cerebellum.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>GTEx v8 Brain Cerebellum</option>
+
+    <option value="GTEx_v8/Brain_Cortex.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'GTEx_v8/Brain_Cortex.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>GTEx v8 Brain Cortex</option>
+
+    <option value="GTEx_v8/Brain_Frontal_Cortex_BA9.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'GTEx_v8/Brain_Frontal_Cortex_BA9.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>GTEx v8 Brain Frontal Cortex BA9</option>
+
+    <option value="GTEx_v8/Brain_Hippocampus.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'GTEx_v8/Brain_Hippocampus.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>GTEx v8 Brain Hippocampus</option>
+
+    <option value="GTEx_v8/Brain_Hypothalamus.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'GTEx_v8/Brain_Hypothalamus.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>GTEx v8 Brain Hypothalamus</option>
+
+    <option value="GTEx_v8/Brain_Nucleus_accumbens_basal_ganglia.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'GTEx_v8/Brain_Nucleus_accumbens_basal_ganglia.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>GTEx v8 Brain Nucleus accumbens basal ganglia</option>
+
+    <option value="GTEx_v8/Brain_Putamen_basal_ganglia.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'GTEx_v8/Brain_Putamen_basal_ganglia.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>GTEx v8 Brain Putamen basal ganglia</option>
+
+    <option value="GTEx_v8/Brain_Spinal_cord_cervical_c-1.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'GTEx_v8/Brain_Spinal_cord_cervical_c-1.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>GTEx v8 Brain Spinal cord cervical c-1</option>
+    
+    <option value="GTEx_v8/Brain_Substantia_nigra.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'GTEx_v8/Brain_Substantia_nigra.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>GTEx v8 Brain Substantia nigra</option>
+
+    <option value="GTEx_v8/Breast_Mammary_Tissue.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'GTEx_v8/Breast_Mammary_Tissue.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>GTEx v8 Breast Mammary Tissue</option>
+
+    <option value="GTEx_v8/Colon_Sigmoid.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'GTEx_v8/Colon_Sigmoid.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>GTEx v8 Colon Sigmoid</option>
+
+    <option value="GTEx_v8/Colon_Transverse.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'GTEx_v8/Colon_Transverse.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>GTEx v8 Colon Transverse</option>
+
+    <option value="GTEx_v8/Esophagus_Gastroesophageal_Junction.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'GTEx_v8/Esophagus_Gastroesophageal_Junction.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>GTEx v8 Esophagus Gastroesophageal Junction</option>
+
+    <option value="GTEx_v8/Esophagus_Mucosa.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'GTEx_v8/Esophagus_Mucosa.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>GTEx v8 Esophagus Mucosa</option>
+
+    <option value="GTEx_v8/Esophagus_Muscularis.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'GTEx_v8/Esophagus_Muscularis.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>GTEx v8 Esophagus Muscularis</option>
+
+    <option value="GTEx_v8/Heart_Atrial_Appendage.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'GTEx_v8/Heart_Atrial_Appendage.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>GTEx v8 Heart Atrial Appendage</option>
+
+    <option value="GTEx_v8/Heart_Left_Ventricle.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'GTEx_v8/Heart_Left_Ventricle.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>GTEx v8 Heart Left Ventricle</option>
+
+    <option value="GTEx_v8/Kidney_Cortex.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'GTEx_v8/Kidney_Cortex.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>GTEx v8 Kidney Cortex</option>
+
+    <option value="GTEx_v8/Liver.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'GTEx_v8/Liver.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>GTEx v8 Liver</option>
+
+    <option value="GTEx_v8/Lung.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'GTEx_v8/Lung.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>GTEx v8 Lung</option>
+
+    <option value="GTEx_v8/Muscle_Skeletal.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'GTEx_v8/Muscle_Skeletal.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>GTEx v8 
+        Muscle Skeletal</option>
+    <option value="GTEx_v8/Nerve_Tibial.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'GTEx_v8/Nerve_Tibial.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>GTEx v8 Nerve Tibial</option>
+
+    <option value="GTEx_v8/Ovary.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'GTEx_v8/Ovary.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>GTEx v8 Ovary</option>
+
+    <option value="GTEx_v8/Pancreas.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'GTEx_v8/Pancreas.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>GTEx v8 Pancreas</option>
+
+    <option value="GTEx_v8/Pituitary.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'GTEx_v8/Pituitary.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>GTEx v8 Pituitary</option>
+
+    <option value="GTEx_v8/Prostate.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'GTEx_v8/Prostate.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>GTEx v8 Prostate</option>
+
+    <option value="GTEx_v8/Minor_Salivary_Gland.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'GTEx_v8/Minor_Salivary_Gland.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>GTEx v8 Minor Salivary Gland</option>
+
+    <option value="GTEx_v8/Cells_Cultured_fibroblasts.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'GTEx_v8/Cells_Cultured_fibroblasts.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>GTEx v8 Cells Cultured fibroblasts</option>
+
+    <option value="GTEx_v8/Skin_Not_Sun_Exposed_Suprapubic.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'GTEx_v8/Skin_Not_Sun_Exposed_Suprapubic.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>GTEx v8 Skin Not Sun Exposed Suprapubic</option>
+
+    <option value="GTEx_v8/Skin_Sun_Exposed_Lower_leg.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'GTEx_v8/Skin_Sun_Exposed_Lower_leg.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>GTEx v8 Skin Sun Exposed Lower leg</option>
+
+    <option value="GTEx_v8/Small_Intestine_Terminal_Ileum.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'GTEx_v8/Small_Intestine_Terminal_Ileum.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>GTEx v8 Small Intestine Terminal Ileum</option>
+
+    <option value="GTEx_v8/Spleen.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'GTEx_v8/Spleen.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>GTEx v8 Spleen</option>
+
+    <option value="GTEx_v8/Stomach.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'GTEx_v8/Stomach.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>GTEx v8 Stomach</option>
+
+    <option value="GTEx_v8/Testis.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'GTEx_v8/Testis.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>GTEx v8 Testis</option>
+
+    <option value="GTEx_v8/Thyroid.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'GTEx_v8/Thyroid.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>GTEx v8 Thyroid</option>
+
+    <option value="GTEx_v8/Uterus.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'GTEx_v8/Uterus.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>GTEx v8 Uterus</option>
+
+    <option value="GTEx_v8/Vagina.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'GTEx_v8/Vagina.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>GTEx v8 Vagina</option>
+
+    <option value="GTEx_v7/Adipose_Subcutaneous.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'GTEx_v7/Adipose_Subcutaneous.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>GTEx v7 Adipose Subcutaneous</option>
+
+    <option value="GTEx_v7/Adipose_Visceral_Omentum.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'GTEx_v7/Adipose_Visceral_Omentum.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>GTEx v7 Adipose Visceral Omentum</option>
+
+    <option value="GTEx_v7/Adrenal_Gland.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'GTEx_v7/Adrenal_Gland.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>GTEx v7 Adrenal Gland</option>
+
+    <option value="GTEx_v7/Cells_EBV-transformed_lymphocytes.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'GTEx_v7/Cells_EBV-transformed_lymphocytes.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>GTEx v7 Cells EBV-transformed lymphocytes</option>
+
+    <option value="GTEx_v7/Whole_Blood.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'GTEx_v7/Whole_Blood.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>GTEx v7 Whole Blood</option>
+
+    <option value="GTEx_v7/Artery_Aorta.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'GTEx_v7/Artery_Aorta.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>GTEx v7 Artery Aorta</option>
+
+    <option value="GTEx_v7/Artery_Coronary.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'GTEx_v7/Artery_Coronary.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>GTEx v7 Artery Coronary</option>
+
+    <option value="GTEx_v7/Artery_Tibial.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'GTEx_v7/Artery_Tibial.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>GTEx v7 Artery Tibial</option>
+
+    <option value="GTEx_v7/Brain_Amygdala.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'GTEx_v7/Brain_Amygdala.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>GTEx v7 rain Amygdala</option>
+
+    <option value="GTEx_v7/Brain_Anterior_cingulate_cortex_BA24.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'GTEx_v7/Brain_Anterior_cingulate_cortex_BA24.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>GTEx v7 Brain Anterior cingulate cortex BA24</option>
+
+    <option value="GTEx_v7/Brain_Caudate_basal_ganglia.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'GTEx_v7/Brain_Caudate_basal_ganglia.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>GTEx v7 Brain Caudate basal ganglia</option>
+
+    <option value="GTEx_v7/Brain_Cerebellar_Hemisphere.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'GTEx_v7/Brain_Cerebellar_Hemisphere.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>GTEx v7 Brain Cerebellar Hemisphere</option>
+
+    <option value="GTEx_v7/Brain_Cerebellum.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'GTEx_v7/Brain_Cerebellum.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>GTEx v7 Brain Cerebellum</option>
+
+    <option value="GTEx_v7/Brain_Cortex.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'GTEx_v7/Brain_Cortex.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>GTEx v7 Brain Cortex</option>
+
+    <option value="GTEx_v7/Brain_Frontal_Cortex_BA9.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'GTEx_v7/Brain_Frontal_Cortex_BA9.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>GTEx v7 Brain Frontal Cortex BA9</option>
+    <option value="GTEx_v7/Brain_Hippocampus.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'GTEx_v7/Brain_Hippocampus.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>GTEx v7 Brain Hippocampus</option>
+    <option value="GTEx_v7/Brain_Hypothalamus.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'GTEx_v7/Brain_Hypothalamus.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>GTEx v7 Brain Hypothalamus</option>
+    <option value="GTEx_v7/Brain_Nucleus_accumbens_basal_ganglia.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'GTEx_v7/Brain_Nucleus_accumbens_basal_ganglia.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>GTEx v7 Brain Nucleus accumbens basal ganglia</option>
+    <option value="GTEx_v7/Brain_Putamen_basal_ganglia.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'GTEx_v7/Brain_Putamen_basal_ganglia.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>GTEx v7 Brain Putamen basal ganglia</option>
+    <option value="GTEx_v7/Brain_Spinal_cord_cervical_c-1.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'GTEx_v7/Brain_Spinal_cord_cervical_c-1.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>GTEx v7 Brain Spinal cord cervical c-1</option>
+    <option value="GTEx_v7/Brain_Substantia_nigra.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'GTEx_v7/Brain_Substantia_nigra.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>GTEx v7 Brain Substantia nigra</option>
+    <option value="GTEx_v7/Breast_Mammary_Tissue.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'GTEx_v7/Breast_Mammary_Tissue.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>GTEx v7 Breast Mammary Tissue</option>
+    <option value="GTEx_v7/Colon_Sigmoid.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'GTEx_v7/Colon_Sigmoid.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>GTEx v7 Colon Sigmoid</option>
+    <option value="GTEx_v7/Colon_Transverse.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'GTEx_v7/Colon_Transverse.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>GTEx v7 Colon Transverse</option>
+    <option value="GTEx_v7/Esophagus_Gastroesophageal_Junction.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'GTEx_v7/Esophagus_Gastroesophageal_Junction.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>GTEx v7 Esophagus Gastroesophageal Junction</option>
+    <option value="GTEx_v7/Esophagus_Mucosa.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'GTEx_v7/Esophagus_Mucosa.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>GTEx v7 Esophagus Mucosa</option>
+    <option value="GTEx_v7/Esophagus_Muscularis.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'GTEx_v7/Esophagus_Muscularis.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>GTEx v7 Esophagus Muscularis</option>
+    <option value="GTEx_v7/Heart_Atrial_Appendage.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'GTEx_v7/Heart_Atrial_Appendage.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>GTEx v7 Heart Atrial Appendage</option>
+    <option value="GTEx_v7/Heart_Left_Ventricle.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'GTEx_v7/Heart_Left_Ventricle.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>GTEx v7 Heart Left Ventricle</option>
+    <option value="GTEx_v7/Liver.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'GTEx_v7/Liver.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>GTEx v7 Liver</option>
+    <option value="GTEx_v7/Lung.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'GTEx_v7/Lung.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>GTEx v7 Lung</option>
+    <option value="GTEx_v7/Muscle_Skeletal.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'GTEx_v7/Muscle_Skeletal.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>GTEx v7 Muscle Skeletal</option>
+    <option value="GTEx_v7/Nerve_Tibial.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'GTEx_v7/Nerve_Tibial.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>GTEx v7 Nerve Tibial</option>
+    <option value="GTEx_v7/Ovary.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'GTEx_v7/Ovary.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>GTEx v7 Ovary</option>
+    <option value="GTEx_v7/Pancreas.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'GTEx_v7/Pancreas.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>GTEx v7 Pancreas</option>
+    <option value="GTEx_v7/Pituitary.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'GTEx_v7/Pituitary.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>GTEx v7 Pituitary</option>
+    <option value="GTEx_v7/Prostate.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'GTEx_v7/Prostate.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>GTEx v7 Prostate</option>
+    <option value="GTEx_v7/Minor_Salivary_Gland.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'GTEx_v7/Minor_Salivary_Gland.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>GTEx v7 Minor Salivary Gland</option>
+    <option value="GTEx_v7/Cells_Transformed_fibroblasts.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'GTEx_v7/Cells_Transformed_fibroblasts.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>GTEx v7 Cells Transformed fibroblasts</option>
+    <option value="GTEx_v7/Skin_Not_Sun_Exposed_Suprapubic.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'GTEx_v7/Skin_Not_Sun_Exposed_Suprapubic.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>GTEx v7 Skin Not Sun Exposed Suprapubic</option>
+    <option value="GTEx_v7/Skin_Sun_Exposed_Lower_leg.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'GTEx_v7/Skin_Sun_Exposed_Lower_leg.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>GTEx v7 Skin Sun Exposed Lower leg</option>
+    <option value="GTEx_v7/Small_Intestine_Terminal_Ileum.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'GTEx_v7/Small_Intestine_Terminal_Ileum.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>GTEx v7 Small Intestine Terminal Ileum</option>
+    <option value="GTEx_v7/Spleen.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'GTEx_v7/Spleen.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>GTEx v7 Spleen</option>
+    <option value="GTEx_v7/Stomach.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'GTEx_v7/Stomach.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>GTEx v7 Stomach</option>
+    <option value="GTEx_v7/Testis.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'GTEx_v7/Testis.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>GTEx v7 Testis</option>
+    <option value="GTEx_v7/Thyroid.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'GTEx_v7/Thyroid.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>GTEx v7 Thyroid</option>
+    <option value="GTEx_v7/Uterus.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'GTEx_v7/Uterus.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>GTEx v7 Uterus</option>
+    <option value="GTEx_v7/Vagina.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'GTEx_v7/Vagina.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>GTEx v7 Vagina</option>
+    <option value="GTEx_v6/Adipose_Subcutaneous.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'GTEx_v6/Adipose_Subcutaneous.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>GTEx v6 Adipose Subcutaneous</option>
+    <option value="GTEx_v6/Adipose_Visceral_Omentum.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'GTEx_v6/Adipose_Visceral_Omentum.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>GTEx v6 Adipose Visceral Omentum</option>
+    <option value="GTEx_v6/Adrenal_Gland.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'GTEx_v6/Adrenal_Gland.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>GTEx v6 Adrenal Gland</option>
+    <option value="GTEx_v6/Cells_EBV-transformed_lymphocytes.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'GTEx_v6/Cells_EBV-transformed_lymphocytes.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>GTEx v6 Cells EBV-transformed lymphocytes</option>
+    <option value="GTEx_v6/Whole_Blood.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'GTEx_v6/Whole_Blood.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>GTEx v6 Whole Blood</option>
+    <option value="GTEx_v6/Artery_Aorta.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'GTEx_v6/Artery_Aorta.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>GTEx v6 Artery Aorta</option>
+    <option value="GTEx_v6/Artery_Coronary.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'GTEx_v6/Artery_Coronary.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>GTEx v6 Artery Coronary</option>
+    <option value="GTEx_v6/Artery_Tibial.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'GTEx_v6/Artery_Tibial.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>GTEx v6 Artery Tibial</option>
+    <option value="GTEx_v6/Brain_Anterior_cingulate_cortex_BA24.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'GTEx_v6/Brain_Anterior_cingulate_cortex_BA24.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>GTEx v6 Brain Anterior cingulate cortex BA24</option>
+    <option value="GTEx_v6/Brain_Caudate_basal_ganglia.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'GTEx_v6/Brain_Caudate_basal_ganglia.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>GTEx v6 Brain Caudate basal ganglia</option>
+    <option value="GTEx_v6/Brain_Cerebellar_Hemisphere.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'GTEx_v6/Brain_Cerebellar_Hemisphere.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>GTEx v6 Brain Cerebellar Hemisphere</option>
+    <option value="GTEx_v6/Brain_Cerebellum.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'GTEx_v6/Brain_Cerebellum.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>GTEx v6 Brain Cerebellum</option>
+    <option value="GTEx_v6/Brain_Cortex.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'GTEx_v6/Brain_Cortex.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>GTEx v6 Brain Cortex</option>
+    <option value="GTEx_v6/Brain_Frontal_Cortex_BA9.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'GTEx_v6/Brain_Frontal_Cortex_BA9.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>GTEx v6 Brain Frontal Cortex BA9</option>
+    <option value="GTEx_v6/Brain_Hippocampus.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'GTEx_v6/Brain_Hippocampus.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>GTEx v6 Brain Hippocampus</option>
+    <option value="GTEx_v6/Brain_Hypothalamus.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'GTEx_v6/Brain_Hypothalamus.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>GTEx v6 Brain Hypothalamus</option>
+    <option value="GTEx_v6/Brain_Nucleus_accumbens_basal_ganglia.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'GTEx_v6/Brain_Nucleus_accumbens_basal_ganglia.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>GTEx v6 Brain Nucleus accumbens basal ganglia</option>
+    <option value="GTEx_v6/Brain_Putamen_basal_ganglia.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'GTEx_v6/Brain_Putamen_basal_ganglia.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>GTEx v6 Brain Putamen basal ganglia</option>
+    <option value="GTEx_v6/Breast_Mammary_Tissue.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'GTEx_v6/Breast_Mammary_Tissue.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>GTEx v6 Breast Mammary Tissue</option>
+    <option value="GTEx_v6/Colon_Sigmoid.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'GTEx_v6/Colon_Sigmoid.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>GTEx v6 Colon Sigmoid</option>
+    <option value="GTEx_v6/Colon_Transverse.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'GTEx_v6/Colon_Transverse.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>GTEx v6 Colon Transverse</option>
+    <option value="GTEx_v6/Esophagus_Gastroesophageal_Junction.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'GTEx_v6/Esophagus_Gastroesophageal_Junction.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>GTEx v6 Esophagus Gastroesophageal Junction</option>
+    <option value="GTEx_v6/Esophagus_Mucosa.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'GTEx_v6/Esophagus_Mucosa.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>GTEx v6 Esophagus Mucosa</option>
+    <option value="GTEx_v6/Esophagus_Muscularis.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'GTEx_v6/Esophagus_Muscularis.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>GTEx v6 Esophagus Muscularis</option>
+    <option value="GTEx_v6/Heart_Atrial_Appendage.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'GTEx_v6/Heart_Atrial_Appendage.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>GTEx v6 Heart Atrial Appendage</option>
+    <option value="GTEx_v6/Heart_Left_Ventricle.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'GTEx_v6/Heart_Left_Ventricle.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>GTEx v6 Heart Left Ventricle</option>
+    <option value="GTEx_v6/Liver.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'GTEx_v6/Liver.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>GTEx v6 Liver</option>
+    <option value="GTEx_v6/Lung.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'GTEx_v6/Lung.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>GTEx v6 Lung</option>
+    <option value="GTEx_v6/Muscle_Skeletal.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'GTEx_v6/Muscle_Skeletal.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>GTEx v6 Muscle Skeletal</option>
+    <option value="GTEx_v6/Nerve_Tibial.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'GTEx_v6/Nerve_Tibial.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>GTEx v6 Nerve Tibial</option>
+    <option value="GTEx_v6/Ovary.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'GTEx_v6/Ovary.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>GTEx v6 Ovary</option>
+    <option value="GTEx_v6/Pancreas.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'GTEx_v6/Pancreas.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>GTEx v6 Pancreas</option>
+    <option value="GTEx_v6/Pituitary.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'GTEx_v6/Pituitary.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>GTEx v6 Pituitary</option>
+    <option value="GTEx_v6/Prostate.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'GTEx_v6/Prostate.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>GTEx v6 Prostate</option>
+    <option value="GTEx_v6/Cells_Transformed_fibroblasts.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'GTEx_v6/Cells_Transformed_fibroblasts.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>GTEx v6 Cells Transformed fibroblasts</option>
+    <option value="GTEx_v6/Skin_Not_Sun_Exposed_Suprapubic.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'GTEx_v6/Skin_Not_Sun_Exposed_Suprapubic.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>GTEx v6 Skin Not Sun Exposed Suprapubic</option>
+    <option value="GTEx_v6/Skin_Sun_Exposed_Lower_leg.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'GTEx_v6/Skin_Sun_Exposed_Lower_leg.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>GTEx v6 Skin Sun Exposed Lower leg</option>
+    <option value="GTEx_v6/Small_Intestine_Terminal_Ileum.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'GTEx_v6/Small_Intestine_Terminal_Ileum.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>GTEx v6 Small Intestine Terminal Ileum</option>
+    <option value="GTEx_v6/Spleen.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'GTEx_v6/Spleen.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>GTEx v6 Spleen</option>
+    <option value="GTEx_v6/Stomach.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'GTEx_v6/Stomach.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>GTEx v6 Stomach</option>
+    <option value="GTEx_v6/Testis.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'GTEx_v6/Testis.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>GTEx v6 Testis</option>
+    <option value="GTEx_v6/Thyroid.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'GTEx_v6/Thyroid.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>GTEx v6 Thyroid</option>
+    <option value="GTEx_v6/Uterus.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'GTEx_v6/Uterus.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>GTEx v6 Uterus</option>
+    <option value="GTEx_v6/Vagina.txt.gz" {% if (values.get('eqtlMapdss') or values.get('eqtlsMapdss')) and 'GTEx_v6/Vagina.txt.gz' in (values.get('eqtlMapdss') or values.get('eqtlsMapdss')).split(':') %}selected{% endif %}>GTEx v6 Vagina</option>
+</select>

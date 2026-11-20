@@ -1,0 +1,18 @@
+FROM python:3
+
+# Set default work directory
+WORKDIR /app
+
+COPY app.config ./
+COPY gwas_file/requirements.txt ./
+RUN pip install --no-cache-dir -r requirements.txt
+
+RUN apt-get update && apt-get install -y --no-install-recommends build-essential r-base \
+    && rm -rf /var/lib/apt/lists/*
+
+RUN Rscript -e "install.packages(c('rprojroot', 'whereami', 'data.table', 'kimisc', 'R.utils'))"
+
+# COPY app.config ./
+COPY gwas_file/gwas_file.py ./
+# COPY ConfigParser.R ./
+COPY gwas_file/find_rsid_from_grch38.py ./

@@ -1,0 +1,22 @@
+FROM python:3
+
+WORKDIR /app
+
+COPY magma/requirements.txt ./
+COPY magma/magma_v1.10_static.zip ./
+RUN pip install --no-cache-dir -r requirements.txt
+
+RUN apt-get update && apt-get install -y --no-install-recommends curl unzip build-essential r-base \
+    && unzip magma_v1.10_static.zip -d /usr/local/share/MAGMA \
+    && chmod +x /usr/local/share/MAGMA/* \
+    && rm magma_v1.10_static.zip \
+    && rm -rf /var/lib/apt/lists/*
+    
+
+RUN Rscript -e "install.packages('data.table')"
+RUN Rscript -e "install.packages('kimisc')"
+
+COPY app.config ./
+COPY magma/magma.py ./
+COPY magma/magma_gene.R ./
+COPY ConfigParser.R ./

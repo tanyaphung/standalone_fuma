@@ -1,0 +1,7 @@
+bin/
+docker_images/__pycache__/
+include/
+lib/
+lib64
+pyvenv.cfg
+docker_images/getld/annovar
